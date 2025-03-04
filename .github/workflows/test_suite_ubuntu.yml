@@ -74,7 +74,7 @@ jobs:
           VN="$(python -c 'import sys; print(".".join(sys.version.split(".")[:2]))')"
           export Torch_DIR="/opt/view/lib/python${VN}/site-packages"
           export PFUNIT_DIR="/opt/view/$(ls /opt/view | grep PFUNIT)"
-          export BUILD_DIR="$(pwd)/src/build"
+          export BUILD_DIR="$(pwd)/build"
           mkdir "${BUILD_DIR}"
           cd "${BUILD_DIR}"
           cmake .. \
