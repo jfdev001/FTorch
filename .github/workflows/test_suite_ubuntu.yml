@@ -49,7 +49,7 @@ jobs:
           - {compiler: intel, version: '2024.1'}
           - {compiler: intel-classic, version: '2021.10'}
           - {compiler: lfortran, version: '0.33.0'}
-          - {compiler: nvidia-hpc, version: '23.11'}
+          - {compiler: nvidia-hpc, version: '25.1'}
         std: ["f2008"]
         include:
           # Run 2018 Fortran standards on latest gcc only
@@ -90,12 +90,12 @@ jobs:
       # MPI is required by pFUnit
       - name: Install an MPI distribution
         run: |
+          # TODO: use /intel/oneapi/mpi stuff instead??
           sudo apt update
           sudo apt install openmpi-bin openmpi-common libopenmpi-dev
 
       - name: Install pFUnit
         run: |
-          export FC=/usr/bin/gfortran
           export MPIF90=/usr/bin/mpif90
           # TODO: Avoid version pinning (needed because version appears in install path)
           git clone -b v4.12.0 https://github.com/Goddard-Fortran-Ecosystem/pFUnit.git
