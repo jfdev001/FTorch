@@ -88,11 +88,11 @@ jobs:
           pip install torch torchvision --index-url https://download.pytorch.org/whl/cpu
 
       # MPI is required by pFUnit
-      - name: Install an MPI distribution
+      - name: Install an MPI distribution and other dependencies 
         run: |
           # TODO: use /intel/oneapi/mpi stuff instead??
           sudo apt update
-          sudo apt install openmpi-bin openmpi-common libopenmpi-dev
+          sudo apt install openmpi-bin openmpi-common libopenmpi-dev libomp-dev
 
       - name: Install pFUnit
         run: |
@@ -114,6 +114,13 @@ jobs:
           export PFUNIT_DIR=$(pwd)/pFUnit/build/installed/PFUNIT-4.12
           mkdir ${BUILD_DIR}
           cd ${BUILD_DIR}
+          # nvfortran does not support -std option
+          if [[ ${FC} -eq "nvfortran" ]]
+          then
+            Fortran_FLAGS=""
+          else
+            Fortran_FLAGS="-std=${{ matrix.std }}"
+          fi
           cmake .. \
             -DPython_EXECUTABLE="$(which python)" \
             -DCMAKE_BUILD_TYPE=Release \
@@ -123,7 +130,7 @@ jobs:
             -DCMAKE_INSTALL_PREFIX=${BUILD_DIR} \
             -DCMAKE_BUILD_TESTS=TRUE \
             -DCMAKE_PREFIX_PATH="${PFUNIT_DIR};${Torch_DIR}" \
-            -DCMAKE_Fortran_FLAGS="-std=${{ matrix.std }}"
+            -DCMAKE_Fortran_FLAGS=${Fortran_FLAGS}
           cmake --build .
           cmake --install .
 
