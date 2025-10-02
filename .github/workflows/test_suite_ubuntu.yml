@@ -134,7 +134,6 @@ jobs:
           cd build
           ctest --verbose --tests-regex example
 
-
   Intel:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
@@ -142,13 +141,13 @@ jobs:
       fail-fast: false
       matrix:
         toolchain:
-          - {compiler: intel, version: '2024.1'}
-          - {compiler: intel-classic, version: '2021.10'}
+          - {compiler: intel, bin: "/opt/intel/oneapi/compiler/latest/bin/ifx"}
+          - {compiler: intel-classic, bin: "/opt/intel/oneapi/compiler/latest/bin/ifort"}
         include:
           # Intel compilers use their own MPI wrappers
-          - toolchain: {compiler: intel, version: '2024.1'}
+          - toolchain: {compiler: intel, bin: "/opt/intel/oneapi/compiler/latest/bin/ifx"}
             mpi: "/opt/intel/oneapi/mpi/latest/bin/mpiifx"
-          - toolchain: {compiler: intel-classic, version: '2021.10'}
+          - toolchain: {compiler: intel-classic, bin: "/opt/intel/oneapi/compiler/latest/bin/ifort"}
             mpi: "/opt/intel/oneapi/mpi/latest/bin/mpifort"
 
     # Steps represent a sequence of tasks that will be executed as part of the job
@@ -158,17 +157,6 @@ jobs:
         with:
           persist-credentials: false
         uses: actions/checkout@v4
-
-      - name: setup-fortran
-        uses: fortran-lang/setup-fortran@v1
-        with:
-          compiler: ${{ matrix.toolchain.compiler }}
-          version: ${{ matrix.toolchain.version }}
-
-      - name: check-compilers-env
-        run: ${FC}
-        env:
-          FC: ${{ steps.setup-fortran.outputs.fc }}
 
       - name: Install Python
         uses: actions/setup-python@v5
@@ -182,11 +170,11 @@ jobs:
           . ftorch/bin/activate
           pip install torch torchvision --index-url https://download.pytorch.org/whl/cpu
 
-      # MPI is required by pFUnit
-      - name: Install Intel MPI
+      - name: Install Intel oneAPI (MPI + icx/ifx/ifort)
         uses: rscohn2/setup-oneapi@v0
         with:
           components: |
+            icx 
             impi
 
       - name: Set Intel environment variables 
@@ -197,6 +185,7 @@ jobs:
 
       - name: Install pFUnit
         run: |
+          export FC=${{ matrix.toolchain.compiler.bin }}
           export MPIF90=${{ matrix.mpi }}
           # TODO: Avoid version pinning (needed because version appears in install path)
           git clone -b v4.12.0 https://github.com/Goddard-Fortran-Ecosystem/pFUnit.git
@@ -216,6 +205,7 @@ jobs:
           mkdir ${BUILD_DIR}
           cd ${BUILD_DIR}
 
+          export FC=${{ matrix.toolchain.compiler.bin }}
           cmake .. \
             -DPython_EXECUTABLE="$(which python)" \
             -DCMAKE_BUILD_TYPE=Release \
