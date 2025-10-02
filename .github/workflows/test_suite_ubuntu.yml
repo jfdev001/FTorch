@@ -177,6 +177,7 @@ jobs:
         with:
           components: |
             icx 
+            ifx 
             impi
 
       - name: Install pFUnit
