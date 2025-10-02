@@ -186,7 +186,7 @@ jobs:
           tar -xzf openmpi-4.1.6.tar.gz
           cd openmpi-4.1.6
 
-          ./configure CC=icc CXX=icpc FC=ifx F77=ifx --prefix=$HOME/openmpi-intel
+          ./configure CC=icx CXX=icpx FC=ifx F77=ifx --prefix=$HOME/openmpi-intel
           make -j$(nproc)
           make install
 
