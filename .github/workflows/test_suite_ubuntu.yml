@@ -179,6 +179,8 @@ jobs:
             icx 
             ifx
 
+      # TODO: This takes ~ 7 minutes... this is way too long... find 
+      # prebuilt binaries compiled with latest intel compilers???
       - name: Build OpenMPI with Intel
         run: |
           source /opt/intel/oneapi/setvars.sh
@@ -195,6 +197,7 @@ jobs:
 
       - name: Check MPI installation
         run: |
+          source /opt/intel/oneapi/setvars.sh
           mpicc --version
           mpif90 --version
           mpiexec --version
