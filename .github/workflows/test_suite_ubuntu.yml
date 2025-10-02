@@ -173,13 +173,12 @@ jobs:
           . ftorch/bin/activate
           pip install torch torchvision --index-url https://download.pytorch.org/whl/cpu
 
-      - name: Install Intel oneAPI 
+      - name: Install Intel ifx and icx 
         uses: rscohn2/setup-oneapi@v0
         with:
           components: |
             icx 
             ifx
-            ifort 
 
       - name: Install OpenMPI
         run: |
