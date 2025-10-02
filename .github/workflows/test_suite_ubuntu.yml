@@ -179,14 +179,9 @@ jobs:
             icx 
             impi
 
-      - name: Set Intel environment variables 
-        run: |
-          source /opt/intel/oneapi/setvars.sh
-          printenv >> $GITHUB_ENV
-          printenv | grep intel
-
       - name: Install pFUnit
         run: |
+          source /opt/intel/oneapi/setvars.sh
           export FC=${{ matrix.FC }}
           export CC=${{ matrix.CC }}
           export CXX=${{ matrix.CXX }}
@@ -200,6 +195,7 @@ jobs:
 
       - name: Build FTorch
         run: |
+          source /opt/intel/oneapi/setvars.sh
           . ftorch/bin/activate
           VN=$(python -c "import sys; print('.'.join(sys.version.split('.')[:2]))")
           export Torch_DIR=${VIRTUAL_ENV}/lib/python${VN}/site-packages
