@@ -31,6 +31,9 @@ concurrency:
   group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
   cancel-in-progress: true
 
+env:
+  DEFAULT_MPI: "/usr/bin/mpif90"
+
 # Workflow run - one or more jobs that can run sequentially or in parallel
 jobs:
   # This workflow contains a single job called "test-suite-ubuntu"
@@ -55,6 +58,17 @@ jobs:
           # Run 2018 Fortran standards on latest gcc only
           - toolchain: {compiler: gcc, version: 13}
             std: "f2018"
+          - toolchain: { compiler: nvidia-hpc, version: '25.1'}
+            supports_fortran_standard_option: false 
+          # Intel compilers use their own MPI wrappers
+          - toolchain: {compiler: intel, version: '2024.1'}
+            mpi: "/opt/intel/oneapi/mpi/latest/bin/mpiifx"
+            needs_oneapi: true 
+            supports_fortran_standard_option: false 
+          - toolchain: {compiler: intel-classic, version: '2021.10'}
+            mpi: "/opt/intel/oneapi/mpi/latest/bin/mpifort"
+            needs_oneapi: true 
+            supports_fortran_standard_option: false 
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
@@ -75,6 +89,7 @@ jobs:
         env:
           FC: ${{ steps.setup-fortran.outputs.fc }}
 
+
       - name: Install Python
         uses: actions/setup-python@v5
         with:
@@ -88,15 +103,28 @@ jobs:
           pip install torch torchvision --index-url https://download.pytorch.org/whl/cpu
 
       # MPI is required by pFUnit
-      - name: Install an MPI distribution and other dependencies 
+      - name: Install an open MPI distribution
         run: |
-          # TODO: use /intel/oneapi/mpi stuff instead??
           sudo apt update
-          sudo apt install openmpi-bin openmpi-common libopenmpi-dev libomp-dev
+          sudo apt install openmpi-bin openmpi-common libopenmpi-dev
+
+      # TODO: install libomp-dev??? or perhaps above as well??
+
+      # pFUnit must be compiled with intel MPI distro if FTorch compiled with 
+      # ifx/ifort 
+      - name: Install Intel MPI
+        uses: rscohn2/setup-oneapi@v0
+        with:
+          components: |
+            impi
 
       - name: Install pFUnit
         run: |
-          export MPIF90=/usr/bin/mpif90
+          export MPIF90=${{ matrix.mpi || env.DEFAULT_MPI }}
+          if [[ "${{ matrix.needs_oneapi }}" == "true" ]]
+          then
+            source /opt/intel/oneapi/setvars.sh
+          fi
           # TODO: Avoid version pinning (needed because version appears in install path)
           git clone -b v4.12.0 https://github.com/Goddard-Fortran-Ecosystem/pFUnit.git
           mkdir pFUnit/build
@@ -114,13 +142,21 @@ jobs:
           export PFUNIT_DIR=$(pwd)/pFUnit/build/installed/PFUNIT-4.12
           mkdir ${BUILD_DIR}
           cd ${BUILD_DIR}
-          # nvfortran does not support -std option
-          if [[ ${FC} -eq "nvfortran" ]]
+
+          if [[ "${{ matrix.needs_oneapi }}" == "true" ]]
           then
-            Fortran_FLAGS=""
-          else
-            Fortran_FLAGS="-std=${{ matrix.std }}"
+            source /opt/intel/oneapi/setvars.sh
           fi
+
+          if [[ "${{ matrix.supports_fortran_standard_option }}" == "false" ]]
+          then
+            export Fortran_FLAGS=""
+          else
+            export Fortran_FLAGS="-std=${{ matrix.std }}"
+          fi
+
+          # TODO: nvfortran fails with could not find MPI_Fortran... maybe 
+          # you need to prefix path??
           cmake .. \
             -DPython_EXECUTABLE="$(which python)" \
             -DCMAKE_BUILD_TYPE=Release \
@@ -130,7 +166,7 @@ jobs:
             -DCMAKE_INSTALL_PREFIX=${BUILD_DIR} \
             -DCMAKE_BUILD_TESTS=TRUE \
             -DCMAKE_PREFIX_PATH="${PFUNIT_DIR};${Torch_DIR}" \
-            -DCMAKE_Fortran_FLAGS=${Fortran_FLAGS}
+            -DCMAKE_Fortran_FLAGS="${Fortran_FLAGS}"
           cmake --build .
           cmake --install .
 
