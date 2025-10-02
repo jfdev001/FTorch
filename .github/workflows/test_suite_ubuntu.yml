@@ -160,6 +160,11 @@ jobs:
           persist-credentials: false
         uses: actions/checkout@v4
 
+      - name: try cmake 
+        run: |
+          echo "cmake: $(which cmake)"
+          fasdiflasdf
+
       - name: Install Python
         uses: actions/setup-python@v5
         with:
