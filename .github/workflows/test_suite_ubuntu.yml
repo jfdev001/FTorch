@@ -142,8 +142,8 @@ jobs:
       matrix:
         toolchain: [intel, intel-classic]
         std: ["f2008"]
-        CC: icx 
-        CXX: icpx
+        CC: [icx]
+        CXX: [icpx]
         include:
           - toolchain: intel 
             FC: ifx 
