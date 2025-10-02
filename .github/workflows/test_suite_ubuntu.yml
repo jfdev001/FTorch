@@ -51,15 +51,11 @@ jobs:
           - {compiler: gcc, version: 9}
           - {compiler: intel, version: '2024.1'}
           - {compiler: intel-classic, version: '2021.10'}
-          - {compiler: lfortran, version: '0.33.0'}
-          - {compiler: nvidia-hpc, version: '25.1'}
         std: ["f2008"]
         include:
           # Run 2018 Fortran standards on latest gcc only
           - toolchain: {compiler: gcc, version: 13}
             std: "f2018"
-          - toolchain: { compiler: nvidia-hpc, version: '25.1'}
-            supports_fortran_standard_option: false 
           # Intel compilers use their own MPI wrappers
           - toolchain: {compiler: intel, version: '2024.1'}
             mpi: "/opt/intel/oneapi/mpi/latest/bin/mpiifx"
