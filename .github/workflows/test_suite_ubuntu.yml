@@ -147,12 +147,10 @@ jobs:
         include:
           - toolchain: intel 
             FC: "/opt/intel/oneapi/compiler/latest/bin/ifx"
-            MPI_FC: "/opt/intel/oneapi/mpi/latest/bin/mpiifx"
           - toolchain: intel-classic 
             # TODO: need to install this still since setup-oneapi does not 
             # have ifort ?
             FC: "/opt/intel/oneapi/compiler/latest/bin/ifort"
-            MPI_FC: "/opt/intel/oneapi/mpi/latest/bin/mpifort"
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
@@ -181,17 +179,33 @@ jobs:
             icx 
             ifx
 
-      - name: Install OpenMPI
+      - name: Build OpenMPI with Intel
         run: |
-          sudo apt update
-          sudo apt install -y openmpi-bin openmpi-common libopenmpi-dev
+          source /opt/intel/oneapi/setvars.sh
+          wget https://download.open-mpi.org/release/open-mpi/v4.1/openmpi-4.1.6.tar.gz
+          tar -xzf openmpi-4.1.6.tar.gz
+          cd openmpi-4.1.6
+
+          ./configure CC=icc CXX=icpc FC=ifx F77=ifx --prefix=$HOME/openmpi-intel
+          make -j$(nproc)
+          make install
+
+          echo "$HOME/openmpi-intel/bin" >> $GITHUB_PATH
+          echo "$HOME/openmpi-intel/lib" >> $GITHUB_PATH
+
+      - name: Check MPI installation
+        run: |
+          mpicc --version
+          mpif90 --version
+          mpiexec --version
 
       - name: Install pFUnit
         run: |
+          source /opt/intel/oneapi/setvars.sh
           export FC=${{ matrix.FC }}
           export CC=${{ matrix.CC }}
           export CXX=${{ matrix.CXX }}
-          export MPIF90=${{ matrix.MPI_FC }}
+          export MPIF90=mpif90
           # TODO: Avoid version pinning (needed because version appears in install path)
           git clone -b v4.12.0 https://github.com/Goddard-Fortran-Ecosystem/pFUnit.git
           mkdir pFUnit/build
@@ -201,6 +215,7 @@ jobs:
 
       - name: Build FTorch
         run: |
+          source /opt/intel/oneapi/setvars.sh
           . ftorch/bin/activate
           VN=$(python -c "import sys; print('.'.join(sys.version.split('.')[:2]))")
           export Torch_DIR=${VIRTUAL_ENV}/lib/python${VN}/site-packages
@@ -210,8 +225,6 @@ jobs:
           mkdir ${BUILD_DIR}
           cd ${BUILD_DIR}
 
-          # NOTE: You *have* to use GNU openmpi here because of MPI_GATHER 
-          # in example 
           export FC=${{ matrix.FC }}
           export CC=${{ matrix.CC }}
           export CXX=${{ matrix.CXX }}
