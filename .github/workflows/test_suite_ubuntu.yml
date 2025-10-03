@@ -185,6 +185,28 @@ jobs:
           printenv >> $GITHUB_ENV
           printenv | grep intel
 
+#       - name: Cache OpenMPI
+#   id: cache-openmpi
+#   uses: actions/cache@v4
+#   with:
+#     path: ~/openmpi-intel
+#     key: openmpi-intel-${{ runner.os }}-openmpi-4.1.2-${{ env.INTEL_VERSION }}
+#
+# - name: Build OpenMPI with Intel
+#   if: steps.cache-openmpi.outputs.cache-hit != 'true'
+#   run: |
+#     wget https://download.open-mpi.org/release/open-mpi/v4.1/openmpi-4.1.2.tar.gz
+#     tar -xzf openmpi-4.1.2.tar.gz
+#     cd openmpi-4.1.2
+#     ./configure CC=icx CXX=icpx FC=ifx --prefix=$HOME/openmpi-intel
+#     make -j$(nproc)
+#     make install
+#
+# - name: Add OpenMPI to PATH
+#   run: |
+#     echo "$HOME/openmpi-intel/bin" >> $GITHUB_PATH
+#     echo "$HOME/openmpi-intel/lib" >> $GITHUB_PATH
+
       # TODO: This takes ~ 7 minutes... this is way too long... find 
       # prebuilt binaries compiled with latest intel compilers
       # or use your own docker iamge or somehting?? 
