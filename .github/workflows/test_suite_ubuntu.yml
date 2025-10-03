@@ -164,7 +164,7 @@ jobs:
         run: |
           #echo "cmake: $(which cmake)"
           mkdir -p $HOME/openmpi-intel/bin 
-          $HOME/openmpi-intel/bin  >> $GITHUB_PATH 
+          echo "$HOME/openmpi-intel/bin"  >> $GITHUB_PATH 
           echo "Github path $GITHUB_PATH"
           failrighthere
 
