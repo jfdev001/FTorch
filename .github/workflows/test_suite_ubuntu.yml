@@ -179,16 +179,22 @@ jobs:
             icx 
             ifx
 
-      # TODO: This takes ~ 7 minutes... this is way too long... find 
-      # prebuilt binaries compiled with latest intel compilers???
-      - name: Build OpenMPI with Intel
+      - name: Setup Intel oneAPI environment
         run: |
           source /opt/intel/oneapi/setvars.sh
-          wget https://download.open-mpi.org/release/open-mpi/v4.1/openmpi-4.1.6.tar.gz
-          tar -xzf openmpi-4.1.6.tar.gz
-          cd openmpi-4.1.6
+          printenv >> $GITHUB_ENV
+          printenv | grep intel
 
-          ./configure CC=icx CXX=icpx FC=ifx F77=ifx --prefix=$HOME/openmpi-intel
+      # TODO: This takes ~ 7 minutes... this is way too long... find 
+      # prebuilt binaries compiled with latest intel compilers
+      # or use your own docker iamge or somehting?? 
+      - name: Build OpenMPI with Intel
+        run: |
+          wget https://download.open-mpi.org/release/open-mpi/v4.1/openmpi-4.1.2.tar.gz
+          tar -xzf openmpi-4.1.2.tar.gz
+          cd openmpi-4.1.2
+
+          ./configure CC=icx CXX=icpx FC=ifx --prefix=$HOME/openmpi-intel
           make -j$(nproc)
           make install
 
@@ -197,14 +203,12 @@ jobs:
 
       - name: Check MPI installation
         run: |
-          source /opt/intel/oneapi/setvars.sh
           mpicc --version
           mpif90 --version
           mpiexec --version
 
       - name: Install pFUnit
         run: |
-          source /opt/intel/oneapi/setvars.sh
           export FC=${{ matrix.FC }}
           export CC=${{ matrix.CC }}
           export CXX=${{ matrix.CXX }}
@@ -218,7 +222,6 @@ jobs:
 
       - name: Build FTorch
         run: |
-          source /opt/intel/oneapi/setvars.sh
           . ftorch/bin/activate
           VN=$(python -c "import sys; print('.'.join(sys.version.split('.')[:2]))")
           export Torch_DIR=${VIRTUAL_ENV}/lib/python${VN}/site-packages
