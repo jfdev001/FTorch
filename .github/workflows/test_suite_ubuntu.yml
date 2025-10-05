@@ -213,7 +213,7 @@ jobs:
       - name: Add OpenMPI to PATH and ENV 
         run: |
           echo "$HOME/openmpi-intel/bin" >> $GITHUB_PATH
-          echo "$HOME/openmpi-intel/lib" >> $GITHUB_ENV 
+          echo "LD_LIBRARY_PATH=$HOME/openmpi-intel/lib" >> $GITHUB_ENV 
 
       - name: Inspect env after OpenMPI setup 
         run: |
