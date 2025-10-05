@@ -187,11 +187,11 @@ jobs:
 
       - name: Inspect env after Intel setup
         run: |
-          # lib 
-          echo $GITHUB_ENV 
-          echo $LD_LIBRARY_PATH
-          # path 
-          echo $GITHUB_PATH 
+          # libs 
+          echo "GITHUB_ENV: $GITHUB_ENV"
+          echo "LD_LIBRARY_PATH: $LD_LIBRARY_PATH"
+          # bins  
+          echo "PATH: $PATH"
 
       - name: Cache OpenMPI
         id: cache-openmpi
@@ -210,18 +210,18 @@ jobs:
           make -j 8 
           make install
 
-      - name: Add OpenMPI to PATH and ENV 
+      - name: Add OpenMPI to env 
         run: |
-          echo "$HOME/openmpi-intel/bin" >> $GITHUB_PATH
-          echo "LD_LIBRARY_PATH=$HOME/openmpi-intel/lib" >> $GITHUB_ENV 
+          echo "PATH=$HOME/openmpi-intel/bin:${PATH}" >> $GITHUB_ENV 
+          echo "LD_LIBRARY_PATH=$HOME/openmpi-intel/lib:${LD_LIBRARY_PATH}" >> $GITHUB_ENV 
 
       - name: Inspect env after OpenMPI setup 
         run: |
           # libs 
-          echo $GITHUB_ENV 
-          echo $LD_LIBRARY_PATH
+          echo "GITHUB_ENV: $GITHUB_ENV"
+          echo "LD_LIBRARY_PATH: $LD_LIBRARY_PATH"
           # bins  
-          echo $GITHUB_PATH 
+          echo "PATH: $PATH"
 
       - name: Check OpenMPI installation
         run: |
