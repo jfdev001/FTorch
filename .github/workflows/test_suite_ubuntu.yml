@@ -256,10 +256,6 @@ jobs:
           export FC=${{ matrix.FC }}
           export CC=${{ matrix.CC }}
           export CXX=${{ matrix.CXX }}
-          # NOTE: You may need to use lib/ instead??
-          # TODO: is this redundant?? bin, lib should already have 
-          # openmpi used here but clearly FindMPI is finding oneapi-mpi first..
-          # see https://github.com/jfdev001/FTorch/issues/2#issuecomment-3369194005
           export OPENMPI_DIR=$HOME/openmpi-${{ matrix.toolchain }}
           cmake .. \
             -DPython_EXECUTABLE="$(which python)" \
