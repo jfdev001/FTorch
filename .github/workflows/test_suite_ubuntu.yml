@@ -197,7 +197,7 @@ jobs:
         id: cache-openmpi
         uses: actions/cache@v4
         with:
-          path: ~/openmpi-intel
+          path: /home/runner/openmpi-intel
           key: openmpi-intel-${{ runner.os }}-openmpi-4.1.2-${{ matrix.FC }}
 
       - name: Build OpenMPI with Intel
