@@ -185,48 +185,53 @@ jobs:
           printenv >> $GITHUB_ENV
           printenv | grep intel
 
-#       - name: Cache OpenMPI
-#   id: cache-openmpi
-#   uses: actions/cache@v4
-#   with:
-#     path: ~/openmpi-intel
-#     key: openmpi-intel-${{ runner.os }}-openmpi-4.1.2-${{ env.INTEL_VERSION }}
-#
-# - name: Build OpenMPI with Intel
-#   if: steps.cache-openmpi.outputs.cache-hit != 'true'
-#   run: |
-#     wget https://download.open-mpi.org/release/open-mpi/v4.1/openmpi-4.1.2.tar.gz
-#     tar -xzf openmpi-4.1.2.tar.gz
-#     cd openmpi-4.1.2
-#     ./configure CC=icx CXX=icpx FC=ifx --prefix=$HOME/openmpi-intel
-#     make -j$(nproc)
-#     make install
-#
-# - name: Add OpenMPI to PATH
-#   run: |
-#     echo "$HOME/openmpi-intel/bin" >> $GITHUB_PATH
-#     echo "$HOME/openmpi-intel/lib" >> $GITHUB_PATH
+      - name: Inspect env after Intel setup
+        run: |
+          # lib 
+          echo $GITHUB_ENV 
+          echo $LD_LIBRARY_PATH
+          # path 
+          echo $GITHUB_PATH 
 
-      # TODO: This takes ~ 7 minutes... this is way too long... find 
-      # prebuilt binaries compiled with latest intel compilers
-      # or use your own docker iamge or somehting?? 
+      - name: Cache OpenMPI
+        id: cache-openmpi
+        uses: actions/cache@v4
+        with:
+          path: ~/openmpi-intel
+          key: openmpi-intel-${{ runner.os }}-openmpi-4.1.2-${{ matrix.FC }}
+
       - name: Build OpenMPI with Intel
+        if: steps.cache-openmpi.outputs.cache-hit != 'true'
         run: |
           wget https://download.open-mpi.org/release/open-mpi/v4.1/openmpi-4.1.2.tar.gz
           tar -xzf openmpi-4.1.2.tar.gz
           cd openmpi-4.1.2
-
-          ./configure CC=icx CXX=icpx FC=ifx --prefix=$HOME/openmpi-intel
-          make -j$(nproc)
+          ./configure CC=icx CXX=icpx FC=${{ matrix.FC }} --prefix=$HOME/openmpi-intel
+          make -j 8 
           make install
 
-          echo "$HOME/openmpi-intel/bin" >> $GITHUB_PATH
-          echo "$HOME/openmpi-intel/lib" >> $GITHUB_PATH
-
-      - name: Check MPI installation
+      - name: Add OpenMPI to PATH and ENV 
         run: |
+          echo "$HOME/openmpi-intel/bin" >> $GITHUB_PATH
+          echo "$HOME/openmpi-intel/lib" >> $GITHUB_ENV 
+
+      - name: Inspect env after OpenMPI setup 
+        run: |
+          # libs 
+          echo $GITHUB_ENV 
+          echo $LD_LIBRARY_PATH
+          # bins  
+          echo $GITHUB_PATH 
+
+      - name: Check OpenMPI installation
+        run: |
+          echo $(which mpicc)
           mpicc --version
+
+          echo $(which mpif90)
           mpif90 --version
+
+          echo $(which mpiexec)
           mpiexec --version
 
       - name: Install pFUnit
@@ -244,6 +249,14 @@ jobs:
 
       - name: Build FTorch
         run: |
+          # Verify (again) correct mpi bins 
+          echo $(which mpicc)
+          mpicc --version
+          echo $(which mpif90)
+          mpif90 --version
+          echo $(which mpiexec)
+          mpiexec --version
+
           . ftorch/bin/activate
           VN=$(python -c "import sys; print('.'.join(sys.version.split('.')[:2]))")
           export Torch_DIR=${VIRTUAL_ENV}/lib/python${VN}/site-packages
