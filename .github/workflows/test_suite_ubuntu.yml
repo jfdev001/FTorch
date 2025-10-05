@@ -189,8 +189,8 @@ jobs:
         id: cache-openmpi
         uses: actions/cache@v4
         with:
-          path: /home/runner/openmpi-intel
-          key: openmpi-intel-${{ runner.os }}-openmpi-4.1.2-${{ matrix.FC }}
+          path: /home/runner/openmpi-intel-${{ matrix.toolchain }}
+          key: openmpi-intel-${{ runner.os }}-openmpi-4.1.2-${{ matrix.toolchain }}
 
       - name: Build OpenMPI with Intel
         if: steps.cache-openmpi.outputs.cache-hit != 'true'
@@ -198,14 +198,14 @@ jobs:
           wget https://download.open-mpi.org/release/open-mpi/v4.1/openmpi-4.1.2.tar.gz
           tar -xzf openmpi-4.1.2.tar.gz
           cd openmpi-4.1.2
-          ./configure CC=icx CXX=icpx FC=${{ matrix.FC }} --prefix=$HOME/openmpi-intel
+          ./configure CC=icx CXX=icpx FC=${{ matrix.FC }} --prefix=$HOME/openmpi-intel-${{ matrix.toolchain }}
           make -j 8 
           make install
 
       - name: Add OpenMPI to env 
         run: |
-          echo "PATH=$HOME/openmpi-intel/bin:${PATH}" >> $GITHUB_ENV 
-          echo "LD_LIBRARY_PATH=$HOME/openmpi-intel/lib:${LD_LIBRARY_PATH}" >> $GITHUB_ENV 
+          echo "PATH=$HOME/openmpi-intel-${{ matrix.toolchain }}/bin:${PATH}" >> $GITHUB_ENV 
+          echo "LD_LIBRARY_PATH=$HOME/openmpi-intel-${{ matrix.toolchain }}/lib:${LD_LIBRARY_PATH}" >> $GITHUB_ENV 
 
       - name: Inspect runner env variables 
         run: |
@@ -233,11 +233,13 @@ jobs:
           export CC=${{ matrix.CC }}
           export CXX=${{ matrix.CXX }}
           export MPIF90=mpif90
+          export OPENMPI_DIR=$HOME/openmpi-intel-${{ matrix.toolchain }}
           # TODO: Avoid version pinning (needed because version appears in install path)
           git clone -b v4.12.0 https://github.com/Goddard-Fortran-Ecosystem/pFUnit.git
           mkdir pFUnit/build
           cd pFUnit/build
-          cmake ..
+          # TODO: is this prefix redundant??
+          cmake .. -DCMAKE_PREFIX_PATH=${OPENMPI_DIR}
           make -j 4 install
 
       - name: Build FTorch
@@ -254,16 +256,20 @@ jobs:
           export FC=${{ matrix.FC }}
           export CC=${{ matrix.CC }}
           export CXX=${{ matrix.CXX }}
+          # NOTE: You may need to use lib/ instead??
+          # TODO: is this redundant?? bin, lib should already have 
+          # openmpi used here but clearly FindMPI is finding oneapi-mpi first..
+          # see https://github.com/jfdev001/FTorch/issues/2#issuecomment-3369194005
+          export OPENMPI_DIR=$HOME/openmpi-intel-${{ matrix.toolchain }}
           cmake .. \
             -DPython_EXECUTABLE="$(which python)" \
             -DCMAKE_BUILD_TYPE=Release \
             -DCMAKE_Fortran_COMPILER=${FC} \
             -DCMAKE_C_COMPILER=${CC} \
             -DCMAKE_CXX_COMPILER=${CXX} \
-            -DCMAKE_MPI_Fortran_COMPILER=mpif90 \
             -DCMAKE_INSTALL_PREFIX=${BUILD_DIR} \
             -DCMAKE_BUILD_TESTS=TRUE \
-            -DCMAKE_PREFIX_PATH="${PFUNIT_DIR};${Torch_DIR}" \
+            -DCMAKE_PREFIX_PATH="${OPENMPI_DIR};${PFUNIT_DIR};${Torch_DIR}" \
             -DCMAKE_Fortran_FLAGS="-stand ${{ matrix.std }}"
           cmake --build .
           cmake --install .
