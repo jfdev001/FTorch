@@ -189,8 +189,8 @@ jobs:
         id: cache-openmpi
         uses: actions/cache@v4
         with:
-          path: /home/runner/openmpi-intel-${{ matrix.toolchain }}
-          key: openmpi-intel-${{ runner.os }}-openmpi-4.1.2-${{ matrix.toolchain }}
+          path: /home/runner/openmpi-${{ matrix.toolchain }}
+          key: openmpi-${{ runner.os }}-openmpi-4.1.2-${{ matrix.toolchain }}
 
       - name: Build OpenMPI with Intel
         if: steps.cache-openmpi.outputs.cache-hit != 'true'
@@ -198,14 +198,14 @@ jobs:
           wget https://download.open-mpi.org/release/open-mpi/v4.1/openmpi-4.1.2.tar.gz
           tar -xzf openmpi-4.1.2.tar.gz
           cd openmpi-4.1.2
-          ./configure CC=icx CXX=icpx FC=${{ matrix.FC }} --prefix=$HOME/openmpi-intel-${{ matrix.toolchain }}
+          ./configure CC=icx CXX=icpx FC=${{ matrix.FC }} --prefix=$HOME/openmpi-${{ matrix.toolchain }}
           make -j 8 
           make install
 
       - name: Add OpenMPI to env 
         run: |
-          echo "PATH=$HOME/openmpi-intel-${{ matrix.toolchain }}/bin:${PATH}" >> $GITHUB_ENV 
-          echo "LD_LIBRARY_PATH=$HOME/openmpi-intel-${{ matrix.toolchain }}/lib:${LD_LIBRARY_PATH}" >> $GITHUB_ENV 
+          echo "PATH=$HOME/openmpi-${{ matrix.toolchain }}/bin:${PATH}" >> $GITHUB_ENV 
+          echo "LD_LIBRARY_PATH=$HOME/openmpi-${{ matrix.toolchain }}/lib:${LD_LIBRARY_PATH}" >> $GITHUB_ENV 
 
       - name: Inspect runner env variables 
         run: |
@@ -233,7 +233,7 @@ jobs:
           export CC=${{ matrix.CC }}
           export CXX=${{ matrix.CXX }}
           export MPIF90=mpif90
-          export OPENMPI_DIR=$HOME/openmpi-intel-${{ matrix.toolchain }}
+          export OPENMPI_DIR=$HOME/openmpi-${{ matrix.toolchain }}
           # TODO: Avoid version pinning (needed because version appears in install path)
           git clone -b v4.12.0 https://github.com/Goddard-Fortran-Ecosystem/pFUnit.git
           mkdir pFUnit/build
@@ -260,7 +260,7 @@ jobs:
           # TODO: is this redundant?? bin, lib should already have 
           # openmpi used here but clearly FindMPI is finding oneapi-mpi first..
           # see https://github.com/jfdev001/FTorch/issues/2#issuecomment-3369194005
-          export OPENMPI_DIR=$HOME/openmpi-intel-${{ matrix.toolchain }}
+          export OPENMPI_DIR=$HOME/openmpi-${{ matrix.toolchain }}
           cmake .. \
             -DPython_EXECUTABLE="$(which python)" \
             -DCMAKE_BUILD_TYPE=Release \
