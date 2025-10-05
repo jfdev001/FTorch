@@ -179,11 +179,25 @@ jobs:
             icx 
             ifx
 
+      - name: Install Intel ifort 
+        uses: fortran-lang/setup-fortran@v1
+        id: setup-fortran
+        with:
+          compiler: intel-classic 
+          version: '2021.10'
+
       - name: Setup Intel oneAPI environment
         run: |
           source /opt/intel/oneapi/setvars.sh
           printenv >> $GITHUB_ENV
           printenv | grep intel
+
+      - name: Check Intel compiler paths 
+        run: |
+          echo "ifort: $(which ifort)"
+          echo "ifx: $(which ifx)"
+          echo "icx: $(which icx)"
+          echo "icpx: $(which icpx)"
 
       - name: Cache OpenMPI
         id: cache-openmpi
