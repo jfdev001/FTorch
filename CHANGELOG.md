@@ -11,6 +11,7 @@ For specific details see the [FTorch online documentation](https://cambridge-icc
 
 ### Added
 
+- Intel-ifx and Intel-ifort CI and GCC v9-13 CI. Intel CI builds OpenMPI from source to accomodate MPI integration tests [#438](https://github.com/Cambridge-ICCS/FTorch/pull/438)
 - Expose tensor strides via `get_stride` method [#416](https://github.com/Cambridge-ICCS/FTorch/pull/416)
 - Remove `UNIX` preprocessor variable that selected the  right C-integer type for 64bit int. Use `int64_t` instead [#416](https://github.com/Cambridge-ICCS/FTorch/pull/416)
 - A new cmake option `MULTI_GPU` to control the build of multi GPU integration tests in [#410](https://github.com/Cambridge-ICCS/FTorch/pull/410)
@@ -36,6 +37,7 @@ For specific details see the [FTorch online documentation](https://cambridge-icc
 
 ### Changed
 
+- In all `CMakeLists.txt` where `find_package(FTorch)` was present, now using `REQUIRE` if not building tests to stop the cmake configuation process early for users who only wish to build examples in [#434](https://github.com/Cambridge-ICCS/FTorch/pull/434)
 - fortitude dependency version increased to 0.7.0
 - Examples reordered to be more logical in [#317](https://github.com/Cambridge-ICCS/FTorch/pull/317)
 - scalar multiplication/division of tensors reworked to require the scalar to first be mapped to a `torch_tensor` in [#289](https://github.com/Cambridge-ICCS/FTorch/pull/289)
