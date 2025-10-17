@@ -8,11 +8,13 @@ project(
   VERSION ${PACKAGE_VERSION}
   LANGUAGES C CXX Fortran)
 
+option(BUILD_SHARED_LIBS "Build using shared libraries" ON)
+
 if(WIN32)
   # if building on windows we need to make sure the symbols are exported
   set(CMAKE_WINDOWS_EXPORT_ALL_SYMBOLS TRUE)
   # required to build the .dll on windows
-  set(BUILD_SHARED_LIBS TRUE)
+  set(BUILD_SHARED_LIBS ON)
 endif()
 
 include(FortranCInterface)
@@ -105,8 +107,7 @@ get_filename_component(TORCH_LIBRARY_DIR ${TORCH_LIBRARY} DIRECTORY)
 set(CMAKE_INSTALL_RPATH "$ORIGIN/${relDir};${TORCH_LIBRARY_DIR}")
 
 # Library with C and Fortran bindings
-add_library(${LIB_NAME} SHARED src/ctorch.cpp src/ftorch.F90
-                               src/ftorch_test_utils.f90)
+add_library(${LIB_NAME} src/ctorch.cpp src/ftorch.F90 src/ftorch_test_utils.f90)
 
 # Define compile definitions, including GPU devices
 target_compile_definitions(
