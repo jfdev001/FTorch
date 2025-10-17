@@ -127,6 +127,8 @@ set_target_properties(
   Fortran_MODULE_DIRECTORY "${CMAKE_BINARY_DIR}/modules")
 # cmake-format: on
 # Link TorchScript
+# TODO: the addition of ltorch and ltorch_library to link.txt in static 
+# build means examples fail as they are unable to find the needed libs 
 target_link_libraries(${LIB_NAME} PRIVATE ${TORCH_LIBRARIES})
 # Include the Fortran mod files in the library
 target_include_directories(
