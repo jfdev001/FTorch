@@ -58,7 +58,7 @@ class Ftorch(CMakePackage):
 
     # TODO: Torch dependencies... pin version as well here??
     # NOTE: on specifying build options for this? cuda, etc...
-    depends_on("py-torch ~cuda ~openmp ~mpi %gcc@11",
+    depends_on("py-torch ~cuda ~openmp ~mpi %gcc@13",
                type=("build", "run"))
 
     # TODO: depends on py-torchvision iff type is test ...
