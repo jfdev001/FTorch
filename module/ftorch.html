@@ -6,7 +6,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-      <meta name="description" content="A library for coupling (Py)Torch machine learning models to Fortran">
+      <meta name="description" content="FTorch - A library for coupling (Py)Torch machine learning models to Fortran codes.Written in modern Fortran (2008) with source code available on GitHub it has been used in multiple scientific projects.The associated JOSS paper can read here.">
     <meta name="author" content="ICCS Cambridge" >
     <link rel="icon" href="../favicon.png">
 
@@ -35,6 +35,7 @@
     <!-- Other scripts and stylesheets -->
     <link href="../css/local.css" rel="stylesheet">
     <link href="../css/pygments.css" rel="stylesheet">
+      <link href="../css/user.css" rel="stylesheet">
     <script src="../js/svg-pan-zoom.min.js"></script>
   </head>
 
@@ -336,8 +337,8 @@
         <ul class="list-group list-group-flush">
             <li class="list-group-item">
               <ul class="list-inline">
-                  <li class="list-inline-item"><a href='http://fortranwiki.org/fortran/show/iso_c_binding'>iso_c_binding</a></li>
                   <li class="list-inline-item"><a href='http://fortranwiki.org/fortran/show/iso_fortran_env'>iso_fortran_env</a></li>
+                  <li class="list-inline-item"><a href='http://fortranwiki.org/fortran/show/iso_c_binding'>iso_c_binding</a></li>
               </ul>
             </li>
             <li class="list-group-item">
@@ -1795,7 +1796,7 @@ parameter
             <td>::</td>
             <td><strong>device_type</strong></td>
             <td>
-<p>Device type the tensor will live on (<code>torch_kCPU</code> or <code>torch_kCUDA</code>)</p>
+<p>Device type the tensor will live on (<code>torch_kCPU</code> or a GPU device type)</p>
             </td>
         </tr>
         <tr>
@@ -1810,7 +1811,7 @@ parameter
             <td>::</td>
             <td><strong>device_index</strong></td>
             <td>
-<p>Device index to use for <code>torch_kCUDA</code> case</p>
+<p>Device index for GPU devices</p>
             </td>
         </tr>
         <tr>
@@ -1909,7 +1910,7 @@ parameter
             <td>::</td>
             <td><strong>device_type</strong></td>
             <td>
-<p>Device type the tensor will live on (<code>torch_kCPU</code> or <code>torch_kCUDA</code>)</p>
+<p>Device type the tensor will live on (<code>torch_kCPU</code> or a GPU device type)</p>
             </td>
         </tr>
         <tr>
@@ -1924,7 +1925,7 @@ parameter
             <td>::</td>
             <td><strong>device_index</strong></td>
             <td>
-<p>Device index to use for <code>torch_kCUDA</code> case</p>
+<p>Device index for GPU devices</p>
             </td>
         </tr>
         <tr>
@@ -2023,7 +2024,7 @@ parameter
             <td>::</td>
             <td><strong>device_type</strong></td>
             <td>
-<p>Device type the tensor will live on (<code>torch_kCPU</code> or <code>torch_kCUDA</code>)</p>
+<p>Device type the tensor will live on (<code>torch_kCPU</code> or a GPU device type)</p>
             </td>
         </tr>
         <tr>
@@ -2038,7 +2039,7 @@ parameter
             <td>::</td>
             <td><strong>device_index</strong></td>
             <td>
-<p>Device index to use for <code>torch_kCUDA</code> case</p>
+<p>Device index for GPU devices</p>
             </td>
         </tr>
         <tr>
@@ -2137,7 +2138,7 @@ parameter
             <td>::</td>
             <td><strong>device_type</strong></td>
             <td>
-<p>Device type the tensor will live on (<code>torch_kCPU</code> or <code>torch_kCUDA</code>)</p>
+<p>Device type the tensor will live on (<code>torch_kCPU</code> or a GPU device type)</p>
             </td>
         </tr>
         <tr>
@@ -2152,7 +2153,7 @@ parameter
             <td>::</td>
             <td><strong>device_index</strong></td>
             <td>
-<p>Device index to use for <code>torch_kCUDA</code> case</p>
+<p>Device index for GPU devices</p>
             </td>
         </tr>
         <tr>
@@ -2251,7 +2252,7 @@ parameter
             <td>::</td>
             <td><strong>device_type</strong></td>
             <td>
-<p>Device type the tensor will live on (<code>torch_kCPU</code> or <code>torch_kCUDA</code>)</p>
+<p>Device type the tensor will live on (<code>torch_kCPU</code> or a GPU device type)</p>
             </td>
         </tr>
         <tr>
@@ -2266,7 +2267,7 @@ parameter
             <td>::</td>
             <td><strong>device_index</strong></td>
             <td>
-<p>Device index to use for <code>torch_kCUDA</code> case</p>
+<p>Device index for GPU devices</p>
             </td>
         </tr>
         <tr>
@@ -2365,7 +2366,7 @@ parameter
             <td>::</td>
             <td><strong>device_type</strong></td>
             <td>
-<p>Device type the tensor will live on (<code>torch_kCPU</code> or <code>torch_kCUDA</code>)</p>
+<p>Device type the tensor will live on (<code>torch_kCPU</code> or a GPU device type)</p>
             </td>
         </tr>
         <tr>
@@ -2380,7 +2381,7 @@ parameter
             <td>::</td>
             <td><strong>device_index</strong></td>
             <td>
-<p>Device index to use for <code>torch_kCUDA</code> case</p>
+<p>Device index for GPU devices</p>
             </td>
         </tr>
         <tr>
@@ -2479,7 +2480,7 @@ parameter
             <td>::</td>
             <td><strong>device_type</strong></td>
             <td>
-<p>Device type the tensor will live on (<code>torch_kCPU</code> or <code>torch_kCUDA</code>)</p>
+<p>Device type the tensor will live on (<code>torch_kCPU</code> or a GPU device type)</p>
             </td>
         </tr>
         <tr>
@@ -2494,7 +2495,7 @@ parameter
             <td>::</td>
             <td><strong>device_index</strong></td>
             <td>
-<p>Device index to use for <code>torch_kCUDA</code> case</p>
+<p>Device index for GPU devices</p>
             </td>
         </tr>
         <tr>
@@ -2593,7 +2594,7 @@ parameter
             <td>::</td>
             <td><strong>device_type</strong></td>
             <td>
-<p>Device type the tensor will live on (<code>torch_kCPU</code> or <code>torch_kCUDA</code>)</p>
+<p>Device type the tensor will live on (<code>torch_kCPU</code> or a GPU device type)</p>
             </td>
         </tr>
         <tr>
@@ -2608,7 +2609,7 @@ parameter
             <td>::</td>
             <td><strong>device_index</strong></td>
             <td>
-<p>Device index to use for <code>torch_kCUDA</code> case</p>
+<p>Device index for GPU devices</p>
             </td>
         </tr>
         <tr>
@@ -2707,7 +2708,7 @@ parameter
             <td>::</td>
             <td><strong>device_type</strong></td>
             <td>
-<p>Device type the tensor will live on (<code>torch_kCPU</code> or <code>torch_kCUDA</code>)</p>
+<p>Device type the tensor will live on (<code>torch_kCPU</code> or a GPU device type)</p>
             </td>
         </tr>
         <tr>
@@ -2722,7 +2723,7 @@ parameter
             <td>::</td>
             <td><strong>device_index</strong></td>
             <td>
-<p>Device index to use for <code>torch_kCUDA</code> case</p>
+<p>Device index for GPU devices</p>
             </td>
         </tr>
         <tr>
@@ -2821,7 +2822,7 @@ parameter
             <td>::</td>
             <td><strong>device_type</strong></td>
             <td>
-<p>Device type the tensor will live on (<code>torch_kCPU</code> or <code>torch_kCUDA</code>)</p>
+<p>Device type the tensor will live on (<code>torch_kCPU</code> or a GPU device type)</p>
             </td>
         </tr>
         <tr>
@@ -2836,7 +2837,7 @@ parameter
             <td>::</td>
             <td><strong>device_index</strong></td>
             <td>
-<p>Device index to use for <code>torch_kCUDA</code> case</p>
+<p>Device index for GPU devices</p>
             </td>
         </tr>
         <tr>
@@ -2935,7 +2936,7 @@ parameter
             <td>::</td>
             <td><strong>device_type</strong></td>
             <td>
-<p>Device type the tensor will live on (<code>torch_kCPU</code> or <code>torch_kCUDA</code>)</p>
+<p>Device type the tensor will live on (<code>torch_kCPU</code> or a GPU device type)</p>
             </td>
         </tr>
         <tr>
@@ -2950,7 +2951,7 @@ parameter
             <td>::</td>
             <td><strong>device_index</strong></td>
             <td>
-<p>Device index to use for <code>torch_kCUDA</code> case</p>
+<p>Device index for GPU devices</p>
             </td>
         </tr>
         <tr>
@@ -3049,7 +3050,7 @@ parameter
             <td>::</td>
             <td><strong>device_type</strong></td>
             <td>
-<p>Device type the tensor will live on (<code>torch_kCPU</code> or <code>torch_kCUDA</code>)</p>
+<p>Device type the tensor will live on (<code>torch_kCPU</code> or a GPU device type)</p>
             </td>
         </tr>
         <tr>
@@ -3064,7 +3065,7 @@ parameter
             <td>::</td>
             <td><strong>device_index</strong></td>
             <td>
-<p>Device index to use for <code>torch_kCUDA</code> case</p>
+<p>Device index for GPU devices</p>
             </td>
         </tr>
         <tr>
@@ -3163,7 +3164,7 @@ parameter
             <td>::</td>
             <td><strong>device_type</strong></td>
             <td>
-<p>Device type the tensor will live on (<code>torch_kCPU</code> or <code>torch_kCUDA</code>)</p>
+<p>Device type the tensor will live on (<code>torch_kCPU</code> or a GPU device type)</p>
             </td>
         </tr>
         <tr>
@@ -3178,7 +3179,7 @@ parameter
             <td>::</td>
             <td><strong>device_index</strong></td>
             <td>
-<p>Device index to use for <code>torch_kCUDA</code> case</p>
+<p>Device index for GPU devices</p>
             </td>
         </tr>
         <tr>
@@ -3277,7 +3278,7 @@ parameter
             <td>::</td>
             <td><strong>device_type</strong></td>
             <td>
-<p>Device type the tensor will live on (<code>torch_kCPU</code> or <code>torch_kCUDA</code>)</p>
+<p>Device type the tensor will live on (<code>torch_kCPU</code> or a GPU device type)</p>
             </td>
         </tr>
         <tr>
@@ -3292,7 +3293,7 @@ parameter
             <td>::</td>
             <td><strong>device_index</strong></td>
             <td>
-<p>Device index to use for <code>torch_kCUDA</code> case</p>
+<p>Device index for GPU devices</p>
             </td>
         </tr>
         <tr>
@@ -3391,7 +3392,7 @@ parameter
             <td>::</td>
             <td><strong>device_type</strong></td>
             <td>
-<p>Device type the tensor will live on (<code>torch_kCPU</code> or <code>torch_kCUDA</code>)</p>
+<p>Device type the tensor will live on (<code>torch_kCPU</code> or a GPU device type)</p>
             </td>
         </tr>
         <tr>
@@ -3406,7 +3407,7 @@ parameter
             <td>::</td>
             <td><strong>device_index</strong></td>
             <td>
-<p>Device index to use for <code>torch_kCUDA</code> case</p>
+<p>Device index for GPU devices</p>
             </td>
         </tr>
         <tr>
@@ -3505,7 +3506,7 @@ parameter
             <td>::</td>
             <td><strong>device_type</strong></td>
             <td>
-<p>Device type the tensor will live on (<code>torch_kCPU</code> or <code>torch_kCUDA</code>)</p>
+<p>Device type the tensor will live on (<code>torch_kCPU</code> or a GPU device type)</p>
             </td>
         </tr>
         <tr>
@@ -3520,7 +3521,7 @@ parameter
             <td>::</td>
             <td><strong>device_index</strong></td>
             <td>
-<p>Device index to use for <code>torch_kCUDA</code> case</p>
+<p>Device index for GPU devices</p>
             </td>
         </tr>
         <tr>
@@ -3619,7 +3620,7 @@ parameter
             <td>::</td>
             <td><strong>device_type</strong></td>
             <td>
-<p>Device type the tensor will live on (<code>torch_kCPU</code> or <code>torch_kCUDA</code>)</p>
+<p>Device type the tensor will live on (<code>torch_kCPU</code> or a GPU device type)</p>
             </td>
         </tr>
         <tr>
@@ -3634,7 +3635,7 @@ parameter
             <td>::</td>
             <td><strong>device_index</strong></td>
             <td>
-<p>Device index to use for <code>torch_kCUDA</code> case</p>
+<p>Device index for GPU devices</p>
             </td>
         </tr>
         <tr>
@@ -3733,7 +3734,7 @@ parameter
             <td>::</td>
             <td><strong>device_type</strong></td>
             <td>
-<p>Device type the tensor will live on (<code>torch_kCPU</code> or <code>torch_kCUDA</code>)</p>
+<p>Device type the tensor will live on (<code>torch_kCPU</code> or a GPU device type)</p>
             </td>
         </tr>
         <tr>
@@ -3748,7 +3749,7 @@ parameter
             <td>::</td>
             <td><strong>device_index</strong></td>
             <td>
-<p>Device index to use for <code>torch_kCUDA</code> case</p>
+<p>Device index for GPU devices</p>
             </td>
         </tr>
         <tr>
@@ -3847,7 +3848,7 @@ parameter
             <td>::</td>
             <td><strong>device_type</strong></td>
             <td>
-<p>Device type the tensor will live on (<code>torch_kCPU</code> or <code>torch_kCUDA</code>)</p>
+<p>Device type the tensor will live on (<code>torch_kCPU</code> or a GPU device type)</p>
             </td>
         </tr>
         <tr>
@@ -3862,7 +3863,7 @@ parameter
             <td>::</td>
             <td><strong>device_index</strong></td>
             <td>
-<p>Device index to use for <code>torch_kCUDA</code> case</p>
+<p>Device index for GPU devices</p>
             </td>
         </tr>
         <tr>
@@ -3961,7 +3962,7 @@ parameter
             <td>::</td>
             <td><strong>device_type</strong></td>
             <td>
-<p>Device type the tensor will live on (<code>torch_kCPU</code> or <code>torch_kCUDA</code>)</p>
+<p>Device type the tensor will live on (<code>torch_kCPU</code> or a GPU device type)</p>
             </td>
         </tr>
         <tr>
@@ -3976,7 +3977,7 @@ parameter
             <td>::</td>
             <td><strong>device_index</strong></td>
             <td>
-<p>Device index to use for <code>torch_kCUDA</code> case</p>
+<p>Device index for GPU devices</p>
             </td>
         </tr>
         <tr>
@@ -4075,7 +4076,7 @@ parameter
             <td>::</td>
             <td><strong>device_type</strong></td>
             <td>
-<p>Device type the tensor will live on (<code>torch_kCPU</code> or <code>torch_kCUDA</code>)</p>
+<p>Device type the tensor will live on (<code>torch_kCPU</code> or a GPU device type)</p>
             </td>
         </tr>
         <tr>
@@ -4090,7 +4091,7 @@ parameter
             <td>::</td>
             <td><strong>device_index</strong></td>
             <td>
-<p>Device index to use for <code>torch_kCUDA</code> case</p>
+<p>Device index for GPU devices</p>
             </td>
         </tr>
         <tr>
@@ -4189,7 +4190,7 @@ parameter
             <td>::</td>
             <td><strong>device_type</strong></td>
             <td>
-<p>Device type the tensor will live on (<code>torch_kCPU</code> or <code>torch_kCUDA</code>)</p>
+<p>Device type the tensor will live on (<code>torch_kCPU</code> or a GPU device type)</p>
             </td>
         </tr>
         <tr>
@@ -4204,7 +4205,7 @@ parameter
             <td>::</td>
             <td><strong>device_index</strong></td>
             <td>
-<p>Device index to use for <code>torch_kCUDA</code> case</p>
+<p>Device index for GPU devices</p>
             </td>
         </tr>
         <tr>
@@ -4303,7 +4304,7 @@ parameter
             <td>::</td>
             <td><strong>device_type</strong></td>
             <td>
-<p>Device type the tensor will live on (<code>torch_kCPU</code> or <code>torch_kCUDA</code>)</p>
+<p>Device type the tensor will live on (<code>torch_kCPU</code> or a GPU device type)</p>
             </td>
         </tr>
         <tr>
@@ -4318,7 +4319,7 @@ parameter
             <td>::</td>
             <td><strong>device_index</strong></td>
             <td>
-<p>Device index to use for <code>torch_kCUDA</code> case</p>
+<p>Device index for GPU devices</p>
             </td>
         </tr>
         <tr>
@@ -4417,7 +4418,7 @@ parameter
             <td>::</td>
             <td><strong>device_type</strong></td>
             <td>
-<p>Device type the tensor will live on (<code>torch_kCPU</code> or <code>torch_kCUDA</code>)</p>
+<p>Device type the tensor will live on (<code>torch_kCPU</code> or a GPU device type)</p>
             </td>
         </tr>
         <tr>
@@ -4432,7 +4433,7 @@ parameter
             <td>::</td>
             <td><strong>device_index</strong></td>
             <td>
-<p>Device index to use for <code>torch_kCUDA</code> case</p>
+<p>Device index for GPU devices</p>
             </td>
         </tr>
         <tr>
@@ -4531,7 +4532,7 @@ parameter
             <td>::</td>
             <td><strong>device_type</strong></td>
             <td>
-<p>Device type the tensor will live on (<code>torch_kCPU</code> or <code>torch_kCUDA</code>)</p>
+<p>Device type the tensor will live on (<code>torch_kCPU</code> or a GPU device type)</p>
             </td>
         </tr>
         <tr>
@@ -4546,7 +4547,7 @@ parameter
             <td>::</td>
             <td><strong>device_index</strong></td>
             <td>
-<p>Device index to use for <code>torch_kCUDA</code> case</p>
+<p>Device index for GPU devices</p>
             </td>
         </tr>
         <tr>
@@ -4645,7 +4646,7 @@ parameter
             <td>::</td>
             <td><strong>device_type</strong></td>
             <td>
-<p>Device type the tensor will live on (<code>torch_kCPU</code> or <code>torch_kCUDA</code>)</p>
+<p>Device type the tensor will live on (<code>torch_kCPU</code> or a GPU device type)</p>
             </td>
         </tr>
         <tr>
@@ -4660,7 +4661,7 @@ parameter
             <td>::</td>
             <td><strong>device_index</strong></td>
             <td>
-<p>Device index to use for <code>torch_kCUDA</code> case</p>
+<p>Device index for GPU devices</p>
             </td>
         </tr>
         <tr>
@@ -4759,7 +4760,7 @@ parameter
             <td>::</td>
             <td><strong>device_type</strong></td>
             <td>
-<p>Device type the tensor will live on (<code>torch_kCPU</code> or <code>torch_kCUDA</code>)</p>
+<p>Device type the tensor will live on (<code>torch_kCPU</code> or a GPU device type)</p>
             </td>
         </tr>
         <tr>
@@ -4774,7 +4775,7 @@ parameter
             <td>::</td>
             <td><strong>device_index</strong></td>
             <td>
-<p>Device index to use for <code>torch_kCUDA</code> case</p>
+<p>Device index for GPU devices</p>
             </td>
         </tr>
         <tr>
@@ -4873,7 +4874,7 @@ parameter
             <td>::</td>
             <td><strong>device_type</strong></td>
             <td>
-<p>Device type the tensor will live on (<code>torch_kCPU</code> or <code>torch_kCUDA</code>)</p>
+<p>Device type the tensor will live on (<code>torch_kCPU</code> or a GPU device type)</p>
             </td>
         </tr>
         <tr>
@@ -4888,7 +4889,7 @@ parameter
             <td>::</td>
             <td><strong>device_index</strong></td>
             <td>
-<p>Device index to use for <code>torch_kCUDA</code> case</p>
+<p>Device index for GPU devices</p>
             </td>
         </tr>
         <tr>
@@ -4987,7 +4988,7 @@ parameter
             <td>::</td>
             <td><strong>device_type</strong></td>
             <td>
-<p>Device type the tensor will live on (<code>torch_kCPU</code> or <code>torch_kCUDA</code>)</p>
+<p>Device type the tensor will live on (<code>torch_kCPU</code> or a GPU device type)</p>
             </td>
         </tr>
         <tr>
@@ -5002,7 +5003,7 @@ parameter
             <td>::</td>
             <td><strong>device_index</strong></td>
             <td>
-<p>Device index to use for <code>torch_kCUDA</code> case</p>
+<p>Device index for GPU devices</p>
             </td>
         </tr>
         <tr>
@@ -5101,7 +5102,7 @@ parameter
             <td>::</td>
             <td><strong>device_type</strong></td>
             <td>
-<p>Device type the tensor will live on (<code>torch_kCPU</code> or <code>torch_kCUDA</code>)</p>
+<p>Device type the tensor will live on (<code>torch_kCPU</code> or a GPU device type)</p>
             </td>
         </tr>
         <tr>
@@ -5116,7 +5117,7 @@ parameter
             <td>::</td>
             <td><strong>device_index</strong></td>
             <td>
-<p>Device index to use for <code>torch_kCUDA</code> case</p>
+<p>Device index for GPU devices</p>
             </td>
         </tr>
         <tr>
@@ -5200,7 +5201,7 @@ parameter
             <td>::</td>
             <td><strong>device_type</strong></td>
             <td>
-<p>Device type the tensor will live on (<code>torch_kCPU</code> or <code>torch_kCUDA</code>)</p>
+<p>Device type the tensor will live on (<code>torch_kCPU</code> or a GPU device type)</p>
             </td>
         </tr>
         <tr>
@@ -5215,7 +5216,7 @@ parameter
             <td>::</td>
             <td><strong>device_index</strong></td>
             <td>
-<p>Device index to use for <code>torch_kCUDA</code> case</p>
+<p>Device index for GPU devices</p>
             </td>
         </tr>
         <tr>
@@ -5299,7 +5300,7 @@ parameter
             <td>::</td>
             <td><strong>device_type</strong></td>
             <td>
-<p>Device type the tensor will live on (<code>torch_kCPU</code> or <code>torch_kCUDA</code>)</p>
+<p>Device type the tensor will live on (<code>torch_kCPU</code> or a GPU device type)</p>
             </td>
         </tr>
         <tr>
@@ -5314,7 +5315,7 @@ parameter
             <td>::</td>
             <td><strong>device_index</strong></td>
             <td>
-<p>Device index to use for <code>torch_kCUDA</code> case</p>
+<p>Device index for GPU devices</p>
             </td>
         </tr>
         <tr>
@@ -5398,7 +5399,7 @@ parameter
             <td>::</td>
             <td><strong>device_type</strong></td>
             <td>
-<p>Device type the tensor will live on (<code>torch_kCPU</code> or <code>torch_kCUDA</code>)</p>
+<p>Device type the tensor will live on (<code>torch_kCPU</code> or a GPU device type)</p>
             </td>
         </tr>
         <tr>
@@ -5413,7 +5414,7 @@ parameter
             <td>::</td>
             <td><strong>device_index</strong></td>
             <td>
-<p>Device index to use for <code>torch_kCUDA</code> case</p>
+<p>Device index for GPU devices</p>
             </td>
         </tr>
         <tr>
@@ -5497,7 +5498,7 @@ parameter
             <td>::</td>
             <td><strong>device_type</strong></td>
             <td>
-<p>Device type the tensor will live on (<code>torch_kCPU</code> or <code>torch_kCUDA</code>)</p>
+<p>Device type the tensor will live on (<code>torch_kCPU</code> or a GPU device type)</p>
             </td>
         </tr>
         <tr>
@@ -5512,7 +5513,7 @@ parameter
             <td>::</td>
             <td><strong>device_index</strong></td>
             <td>
-<p>Device index to use for <code>torch_kCUDA</code> case</p>
+<p>Device index for GPU devices</p>
             </td>
         </tr>
         <tr>
@@ -5596,7 +5597,7 @@ parameter
             <td>::</td>
             <td><strong>device_type</strong></td>
             <td>
-<p>Device type the tensor will live on (<code>torch_kCPU</code> or <code>torch_kCUDA</code>)</p>
+<p>Device type the tensor will live on (<code>torch_kCPU</code> or a GPU device type)</p>
             </td>
         </tr>
         <tr>
@@ -5611,7 +5612,7 @@ parameter
             <td>::</td>
             <td><strong>device_index</strong></td>
             <td>
-<p>Device index to use for <code>torch_kCUDA</code> case</p>
+<p>Device index for GPU devices</p>
             </td>
         </tr>
         <tr>
@@ -5695,7 +5696,7 @@ parameter
             <td>::</td>
             <td><strong>device_type</strong></td>
             <td>
-<p>Device type the tensor will live on (<code>torch_kCPU</code> or <code>torch_kCUDA</code>)</p>
+<p>Device type the tensor will live on (<code>torch_kCPU</code> or a GPU device type)</p>
             </td>
         </tr>
         <tr>
@@ -5710,7 +5711,7 @@ parameter
             <td>::</td>
             <td><strong>device_index</strong></td>
             <td>
-<p>Device index to use for <code>torch_kCUDA</code> case</p>
+<p>Device index for GPU devices</p>
             </td>
         </tr>
         <tr>
@@ -5794,7 +5795,7 @@ parameter
             <td>::</td>
             <td><strong>device_type</strong></td>
             <td>
-<p>Device type the tensor will live on (<code>torch_kCPU</code> or <code>torch_kCUDA</code>)</p>
+<p>Device type the tensor will live on (<code>torch_kCPU</code> or a GPU device type)</p>
             </td>
         </tr>
         <tr>
@@ -5809,7 +5810,7 @@ parameter
             <td>::</td>
             <td><strong>device_index</strong></td>
             <td>
-<p>Device index to use for <code>torch_kCUDA</code> case</p>
+<p>Device index for GPU devices</p>
             </td>
         </tr>
         <tr>
@@ -5893,7 +5894,7 @@ parameter
             <td>::</td>
             <td><strong>device_type</strong></td>
             <td>
-<p>Device type the tensor will live on (<code>torch_kCPU</code> or <code>torch_kCUDA</code>)</p>
+<p>Device type the tensor will live on (<code>torch_kCPU</code> or a GPU device type)</p>
             </td>
         </tr>
         <tr>
@@ -5908,7 +5909,7 @@ parameter
             <td>::</td>
             <td><strong>device_index</strong></td>
             <td>
-<p>Device index to use for <code>torch_kCUDA</code> case</p>
+<p>Device index for GPU devices</p>
             </td>
         </tr>
         <tr>
@@ -5992,7 +5993,7 @@ parameter
             <td>::</td>
             <td><strong>device_type</strong></td>
             <td>
-<p>Device type the tensor will live on (<code>torch_kCPU</code> or <code>torch_kCUDA</code>)</p>
+<p>Device type the tensor will live on (<code>torch_kCPU</code> or a GPU device type)</p>
             </td>
         </tr>
         <tr>
@@ -6007,7 +6008,7 @@ parameter
             <td>::</td>
             <td><strong>device_index</strong></td>
             <td>
-<p>Device index to use for <code>torch_kCUDA</code> case</p>
+<p>Device index for GPU devices</p>
             </td>
         </tr>
         <tr>
@@ -6091,7 +6092,7 @@ parameter
             <td>::</td>
             <td><strong>device_type</strong></td>
             <td>
-<p>Device type the tensor will live on (<code>torch_kCPU</code> or <code>torch_kCUDA</code>)</p>
+<p>Device type the tensor will live on (<code>torch_kCPU</code> or a GPU device type)</p>
             </td>
         </tr>
         <tr>
@@ -6106,7 +6107,7 @@ parameter
             <td>::</td>
             <td><strong>device_index</strong></td>
             <td>
-<p>Device index to use for <code>torch_kCUDA</code> case</p>
+<p>Device index for GPU devices</p>
             </td>
         </tr>
         <tr>
@@ -6190,7 +6191,7 @@ parameter
             <td>::</td>
             <td><strong>device_type</strong></td>
             <td>
-<p>Device type the tensor will live on (<code>torch_kCPU</code> or <code>torch_kCUDA</code>)</p>
+<p>Device type the tensor will live on (<code>torch_kCPU</code> or a GPU device type)</p>
             </td>
         </tr>
         <tr>
@@ -6205,7 +6206,7 @@ parameter
             <td>::</td>
             <td><strong>device_index</strong></td>
             <td>
-<p>Device index to use for <code>torch_kCUDA</code> case</p>
+<p>Device index for GPU devices</p>
             </td>
         </tr>
         <tr>
@@ -6289,7 +6290,7 @@ parameter
             <td>::</td>
             <td><strong>device_type</strong></td>
             <td>
-<p>Device type the tensor will live on (<code>torch_kCPU</code> or <code>torch_kCUDA</code>)</p>
+<p>Device type the tensor will live on (<code>torch_kCPU</code> or a GPU device type)</p>
             </td>
         </tr>
         <tr>
@@ -6304,7 +6305,7 @@ parameter
             <td>::</td>
             <td><strong>device_index</strong></td>
             <td>
-<p>Device index to use for <code>torch_kCUDA</code> case</p>
+<p>Device index for GPU devices</p>
             </td>
         </tr>
         <tr>
@@ -6388,7 +6389,7 @@ parameter
             <td>::</td>
             <td><strong>device_type</strong></td>
             <td>
-<p>Device type the tensor will live on (<code>torch_kCPU</code> or <code>torch_kCUDA</code>)</p>
+<p>Device type the tensor will live on (<code>torch_kCPU</code> or a GPU device type)</p>
             </td>
         </tr>
         <tr>
@@ -6403,7 +6404,7 @@ parameter
             <td>::</td>
             <td><strong>device_index</strong></td>
             <td>
-<p>Device index to use for <code>torch_kCUDA</code> case</p>
+<p>Device index for GPU devices</p>
             </td>
         </tr>
         <tr>
@@ -6487,7 +6488,7 @@ parameter
             <td>::</td>
             <td><strong>device_type</strong></td>
             <td>
-<p>Device type the tensor will live on (<code>torch_kCPU</code> or <code>torch_kCUDA</code>)</p>
+<p>Device type the tensor will live on (<code>torch_kCPU</code> or a GPU device type)</p>
             </td>
         </tr>
         <tr>
@@ -6502,7 +6503,7 @@ parameter
             <td>::</td>
             <td><strong>device_index</strong></td>
             <td>
-<p>Device index to use for <code>torch_kCUDA</code> case</p>
+<p>Device index for GPU devices</p>
             </td>
         </tr>
         <tr>
@@ -6586,7 +6587,7 @@ parameter
             <td>::</td>
             <td><strong>device_type</strong></td>
             <td>
-<p>Device type the tensor will live on (<code>torch_kCPU</code> or <code>torch_kCUDA</code>)</p>
+<p>Device type the tensor will live on (<code>torch_kCPU</code> or a GPU device type)</p>
             </td>
         </tr>
         <tr>
@@ -6601,7 +6602,7 @@ parameter
             <td>::</td>
             <td><strong>device_index</strong></td>
             <td>
-<p>Device index to use for <code>torch_kCUDA</code> case</p>
+<p>Device index for GPU devices</p>
             </td>
         </tr>
         <tr>
@@ -6685,7 +6686,7 @@ parameter
             <td>::</td>
             <td><strong>device_type</strong></td>
             <td>
-<p>Device type the tensor will live on (<code>torch_kCPU</code> or <code>torch_kCUDA</code>)</p>
+<p>Device type the tensor will live on (<code>torch_kCPU</code> or a GPU device type)</p>
             </td>
         </tr>
         <tr>
@@ -6700,7 +6701,7 @@ parameter
             <td>::</td>
             <td><strong>device_index</strong></td>
             <td>
-<p>Device index to use for <code>torch_kCUDA</code> case</p>
+<p>Device index for GPU devices</p>
             </td>
         </tr>
         <tr>
@@ -6784,7 +6785,7 @@ parameter
             <td>::</td>
             <td><strong>device_type</strong></td>
             <td>
-<p>Device type the tensor will live on (<code>torch_kCPU</code> or <code>torch_kCUDA</code>)</p>
+<p>Device type the tensor will live on (<code>torch_kCPU</code> or a GPU device type)</p>
             </td>
         </tr>
         <tr>
@@ -6799,7 +6800,7 @@ parameter
             <td>::</td>
             <td><strong>device_index</strong></td>
             <td>
-<p>Device index to use for <code>torch_kCUDA</code> case</p>
+<p>Device index for GPU devices</p>
             </td>
         </tr>
         <tr>
@@ -6883,7 +6884,7 @@ parameter
             <td>::</td>
             <td><strong>device_type</strong></td>
             <td>
-<p>Device type the tensor will live on (<code>torch_kCPU</code> or <code>torch_kCUDA</code>)</p>
+<p>Device type the tensor will live on (<code>torch_kCPU</code> or a GPU device type)</p>
             </td>
         </tr>
         <tr>
@@ -6898,7 +6899,7 @@ parameter
             <td>::</td>
             <td><strong>device_index</strong></td>
             <td>
-<p>Device index to use for <code>torch_kCUDA</code> case</p>
+<p>Device index for GPU devices</p>
             </td>
         </tr>
         <tr>
@@ -6982,7 +6983,7 @@ parameter
             <td>::</td>
             <td><strong>device_type</strong></td>
             <td>
-<p>Device type the tensor will live on (<code>torch_kCPU</code> or <code>torch_kCUDA</code>)</p>
+<p>Device type the tensor will live on (<code>torch_kCPU</code> or a GPU device type)</p>
             </td>
         </tr>
         <tr>
@@ -6997,7 +6998,7 @@ parameter
             <td>::</td>
             <td><strong>device_index</strong></td>
             <td>
-<p>Device index to use for <code>torch_kCUDA</code> case</p>
+<p>Device index for GPU devices</p>
             </td>
         </tr>
         <tr>
@@ -7081,7 +7082,7 @@ parameter
             <td>::</td>
             <td><strong>device_type</strong></td>
             <td>
-<p>Device type the tensor will live on (<code>torch_kCPU</code> or <code>torch_kCUDA</code>)</p>
+<p>Device type the tensor will live on (<code>torch_kCPU</code> or a GPU device type)</p>
             </td>
         </tr>
         <tr>
@@ -7096,7 +7097,7 @@ parameter
             <td>::</td>
             <td><strong>device_index</strong></td>
             <td>
-<p>Device index to use for <code>torch_kCUDA</code> case</p>
+<p>Device index for GPU devices</p>
             </td>
         </tr>
         <tr>
@@ -7180,7 +7181,7 @@ parameter
             <td>::</td>
             <td><strong>device_type</strong></td>
             <td>
-<p>Device type the tensor will live on (<code>torch_kCPU</code> or <code>torch_kCUDA</code>)</p>
+<p>Device type the tensor will live on (<code>torch_kCPU</code> or a GPU device type)</p>
             </td>
         </tr>
         <tr>
@@ -7195,7 +7196,7 @@ parameter
             <td>::</td>
             <td><strong>device_index</strong></td>
             <td>
-<p>Device index to use for <code>torch_kCUDA</code> case</p>
+<p>Device index for GPU devices</p>
             </td>
         </tr>
         <tr>
@@ -7279,7 +7280,7 @@ parameter
             <td>::</td>
             <td><strong>device_type</strong></td>
             <td>
-<p>Device type the tensor will live on (<code>torch_kCPU</code> or <code>torch_kCUDA</code>)</p>
+<p>Device type the tensor will live on (<code>torch_kCPU</code> or a GPU device type)</p>
             </td>
         </tr>
         <tr>
@@ -7294,7 +7295,7 @@ parameter
             <td>::</td>
             <td><strong>device_index</strong></td>
             <td>
-<p>Device index to use for <code>torch_kCUDA</code> case</p>
+<p>Device index for GPU devices</p>
             </td>
         </tr>
         <tr>
@@ -7378,7 +7379,7 @@ parameter
             <td>::</td>
             <td><strong>device_type</strong></td>
             <td>
-<p>Device type the tensor will live on (<code>torch_kCPU</code> or <code>torch_kCUDA</code>)</p>
+<p>Device type the tensor will live on (<code>torch_kCPU</code> or a GPU device type)</p>
             </td>
         </tr>
         <tr>
@@ -7393,7 +7394,7 @@ parameter
             <td>::</td>
             <td><strong>device_index</strong></td>
             <td>
-<p>Device index to use for <code>torch_kCUDA</code> case</p>
+<p>Device index for GPU devices</p>
             </td>
         </tr>
         <tr>
@@ -7477,7 +7478,7 @@ parameter
             <td>::</td>
             <td><strong>device_type</strong></td>
             <td>
-<p>Device type the tensor will live on (<code>torch_kCPU</code> or <code>torch_kCUDA</code>)</p>
+<p>Device type the tensor will live on (<code>torch_kCPU</code> or a GPU device type)</p>
             </td>
         </tr>
         <tr>
@@ -7492,7 +7493,7 @@ parameter
             <td>::</td>
             <td><strong>device_index</strong></td>
             <td>
-<p>Device index to use for <code>torch_kCUDA</code> case</p>
+<p>Device index for GPU devices</p>
             </td>
         </tr>
         <tr>
@@ -7576,7 +7577,7 @@ parameter
             <td>::</td>
             <td><strong>device_type</strong></td>
             <td>
-<p>Device type the tensor will live on (<code>torch_kCPU</code> or <code>torch_kCUDA</code>)</p>
+<p>Device type the tensor will live on (<code>torch_kCPU</code> or a GPU device type)</p>
             </td>
         </tr>
         <tr>
@@ -7591,7 +7592,7 @@ parameter
             <td>::</td>
             <td><strong>device_index</strong></td>
             <td>
-<p>Device index to use for <code>torch_kCUDA</code> case</p>
+<p>Device index for GPU devices</p>
             </td>
         </tr>
         <tr>
@@ -7675,7 +7676,7 @@ parameter
             <td>::</td>
             <td><strong>device_type</strong></td>
             <td>
-<p>Device type the tensor will live on (<code>torch_kCPU</code> or <code>torch_kCUDA</code>)</p>
+<p>Device type the tensor will live on (<code>torch_kCPU</code> or a GPU device type)</p>
             </td>
         </tr>
         <tr>
@@ -7690,7 +7691,7 @@ parameter
             <td>::</td>
             <td><strong>device_index</strong></td>
             <td>
-<p>Device index to use for <code>torch_kCUDA</code> case</p>
+<p>Device index for GPU devices</p>
             </td>
         </tr>
         <tr>
@@ -7774,7 +7775,7 @@ parameter
             <td>::</td>
             <td><strong>device_type</strong></td>
             <td>
-<p>Device type the tensor will live on (<code>torch_kCPU</code> or <code>torch_kCUDA</code>)</p>
+<p>Device type the tensor will live on (<code>torch_kCPU</code> or a GPU device type)</p>
             </td>
         </tr>
         <tr>
@@ -7789,7 +7790,7 @@ parameter
             <td>::</td>
             <td><strong>device_index</strong></td>
             <td>
-<p>Device index to use for <code>torch_kCUDA</code> case</p>
+<p>Device index for GPU devices</p>
             </td>
         </tr>
         <tr>
@@ -7873,7 +7874,7 @@ parameter
             <td>::</td>
             <td><strong>device_type</strong></td>
             <td>
-<p>Device type the tensor will live on (<code>torch_kCPU</code> or <code>torch_kCUDA</code>)</p>
+<p>Device type the tensor will live on (<code>torch_kCPU</code> or a GPU device type)</p>
             </td>
         </tr>
         <tr>
@@ -7888,7 +7889,7 @@ parameter
             <td>::</td>
             <td><strong>device_index</strong></td>
             <td>
-<p>Device index to use for <code>torch_kCUDA</code> case</p>
+<p>Device index for GPU devices</p>
             </td>
         </tr>
         <tr>
@@ -7972,7 +7973,7 @@ parameter
             <td>::</td>
             <td><strong>device_type</strong></td>
             <td>
-<p>Device type the tensor will live on (<code>torch_kCPU</code> or <code>torch_kCUDA</code>)</p>
+<p>Device type the tensor will live on (<code>torch_kCPU</code> or a GPU device type)</p>
             </td>
         </tr>
         <tr>
@@ -7987,7 +7988,7 @@ parameter
             <td>::</td>
             <td><strong>device_index</strong></td>
             <td>
-<p>Device index to use for <code>torch_kCUDA</code> case</p>
+<p>Device index for GPU devices</p>
             </td>
         </tr>
         <tr>
@@ -8071,7 +8072,7 @@ parameter
             <td>::</td>
             <td><strong>device_type</strong></td>
             <td>
-<p>Device type the tensor will live on (<code>torch_kCPU</code> or <code>torch_kCUDA</code>)</p>
+<p>Device type the tensor will live on (<code>torch_kCPU</code> or a GPU device type)</p>
             </td>
         </tr>
         <tr>
@@ -8086,7 +8087,7 @@ parameter
             <td>::</td>
             <td><strong>device_index</strong></td>
             <td>
-<p>Device index to use for <code>torch_kCUDA</code> case</p>
+<p>Device index for GPU devices</p>
             </td>
         </tr>
         <tr>
@@ -9508,7 +9509,7 @@ parameter
             <td>::</td>
             <td><strong>device_type</strong></td>
             <td>
-<p>Device type the tensor will live on (<code>torch_kCPU</code> or <code>torch_kCUDA</code>)</p>
+<p>Device type the tensor will live on (<code>torch_kCPU</code> or a GPU device type)</p>
             </td>
         </tr>
         <tr>
@@ -9523,7 +9524,7 @@ parameter
             <td>::</td>
             <td><strong>device_index</strong></td>
             <td>
-<p>device index to use for <code>torch_kCUDA</code> case</p>
+<p>Device index for GPU devices</p>
             </td>
         </tr>
         <tr>
@@ -9843,7 +9844,7 @@ parameter
             <td>::</td>
             <td><strong>device_type</strong></td>
             <td>
-<p>Device type the tensor will live on (<code>torch_kCPU</code> or <code>torch_kCUDA</code>)</p>
+<p>Device type the tensor will live on (<code>torch_kCPU</code> or a GPU device type)</p>
             </td>
         </tr>
         <tr>
@@ -9858,7 +9859,7 @@ parameter
             <td>::</td>
             <td><strong>device_index</strong></td>
             <td>
-<p>Device index to use for <code>torch_kCUDA</code> case</p>
+<p>Device index for GPU devices</p>
             </td>
         </tr>
         <tr>
@@ -9958,7 +9959,7 @@ parameter
             <td>::</td>
             <td><strong>device_type</strong></td>
             <td>
-<p>Device type the tensor will live on (<code>torch_kCPU</code> or <code>torch_kCUDA</code>)</p>
+<p>Device type the tensor will live on (<code>torch_kCPU</code> or a GPU device type)</p>
             </td>
         </tr>
         <tr>
@@ -9973,7 +9974,7 @@ parameter
             <td>::</td>
             <td><strong>device_index</strong></td>
             <td>
-<p>Device index to use for <code>torch_kCUDA</code> case</p>
+<p>Device index for GPU devices</p>
             </td>
         </tr>
         <tr>
@@ -10058,7 +10059,7 @@ parameter
             <td>::</td>
             <td><strong>device_type</strong></td>
             <td>
-<p>Device type the tensor will live on (<code>torch_kCPU</code> or <code>torch_kCUDA</code>)</p>
+<p>Device type the tensor will live on (<code>torch_kCPU</code> or a GPU device type)</p>
             </td>
         </tr>
         <tr>
@@ -10073,7 +10074,7 @@ parameter
             <td>::</td>
             <td><strong>device_index</strong></td>
             <td>
-<p>Device index to use for <code>torch_kCUDA</code> case</p>
+<p>Device index for GPU devices</p>
             </td>
         </tr>
         <tr>
@@ -10173,7 +10174,7 @@ parameter
             <td>::</td>
             <td><strong>device_type</strong></td>
             <td>
-<p>Device type the tensor will live on (<code>torch_kCPU</code> or <code>torch_kCUDA</code>)</p>
+<p>Device type the tensor will live on (<code>torch_kCPU</code> or a GPU device type)</p>
             </td>
         </tr>
         <tr>
@@ -10188,7 +10189,7 @@ parameter
             <td>::</td>
             <td><strong>device_index</strong></td>
             <td>
-<p>Device index to use for <code>torch_kCUDA</code> case</p>
+<p>Device index for GPU devices</p>
             </td>
         </tr>
         <tr>
@@ -10273,7 +10274,7 @@ parameter
             <td>::</td>
             <td><strong>device_type</strong></td>
             <td>
-<p>Device type the tensor will live on (<code>torch_kCPU</code> or <code>torch_kCUDA</code>)</p>
+<p>Device type the tensor will live on (<code>torch_kCPU</code> or a GPU device type)</p>
             </td>
         </tr>
         <tr>
@@ -10288,7 +10289,7 @@ parameter
             <td>::</td>
             <td><strong>device_index</strong></td>
             <td>
-<p>Device index to use for <code>torch_kCUDA</code> case</p>
+<p>Device index for GPU devices</p>
             </td>
         </tr>
         <tr>
@@ -10388,7 +10389,7 @@ parameter
             <td>::</td>
             <td><strong>device_type</strong></td>
             <td>
-<p>Device type the tensor will live on (<code>torch_kCPU</code> or <code>torch_kCUDA</code>)</p>
+<p>Device type the tensor will live on (<code>torch_kCPU</code> or a GPU device type)</p>
             </td>
         </tr>
         <tr>
@@ -10403,7 +10404,7 @@ parameter
             <td>::</td>
             <td><strong>device_index</strong></td>
             <td>
-<p>Device index to use for <code>torch_kCUDA</code> case</p>
+<p>Device index for GPU devices</p>
             </td>
         </tr>
         <tr>
@@ -10488,7 +10489,7 @@ parameter
             <td>::</td>
             <td><strong>device_type</strong></td>
             <td>
-<p>Device type the tensor will live on (<code>torch_kCPU</code> or <code>torch_kCUDA</code>)</p>
+<p>Device type the tensor will live on (<code>torch_kCPU</code> or a GPU device type)</p>
             </td>
         </tr>
         <tr>
@@ -10503,7 +10504,7 @@ parameter
             <td>::</td>
             <td><strong>device_index</strong></td>
             <td>
-<p>Device index to use for <code>torch_kCUDA</code> case</p>
+<p>Device index for GPU devices</p>
             </td>
         </tr>
         <tr>
@@ -10603,7 +10604,7 @@ parameter
             <td>::</td>
             <td><strong>device_type</strong></td>
             <td>
-<p>Device type the tensor will live on (<code>torch_kCPU</code> or <code>torch_kCUDA</code>)</p>
+<p>Device type the tensor will live on (<code>torch_kCPU</code> or a GPU device type)</p>
             </td>
         </tr>
         <tr>
@@ -10618,7 +10619,7 @@ parameter
             <td>::</td>
             <td><strong>device_index</strong></td>
             <td>
-<p>Device index to use for <code>torch_kCUDA</code> case</p>
+<p>Device index for GPU devices</p>
             </td>
         </tr>
         <tr>
@@ -10703,7 +10704,7 @@ parameter
             <td>::</td>
             <td><strong>device_type</strong></td>
             <td>
-<p>Device type the tensor will live on (<code>torch_kCPU</code> or <code>torch_kCUDA</code>)</p>
+<p>Device type the tensor will live on (<code>torch_kCPU</code> or a GPU device type)</p>
             </td>
         </tr>
         <tr>
@@ -10718,7 +10719,7 @@ parameter
             <td>::</td>
             <td><strong>device_index</strong></td>
             <td>
-<p>Device index to use for <code>torch_kCUDA</code> case</p>
+<p>Device index for GPU devices</p>
             </td>
         </tr>
         <tr>
@@ -10818,7 +10819,7 @@ parameter
             <td>::</td>
             <td><strong>device_type</strong></td>
             <td>
-<p>Device type the tensor will live on (<code>torch_kCPU</code> or <code>torch_kCUDA</code>)</p>
+<p>Device type the tensor will live on (<code>torch_kCPU</code> or a GPU device type)</p>
             </td>
         </tr>
         <tr>
@@ -10833,7 +10834,7 @@ parameter
             <td>::</td>
             <td><strong>device_index</strong></td>
             <td>
-<p>Device index to use for <code>torch_kCUDA</code> case</p>
+<p>Device index for GPU devices</p>
             </td>
         </tr>
         <tr>
@@ -10918,7 +10919,7 @@ parameter
             <td>::</td>
             <td><strong>device_type</strong></td>
             <td>
-<p>Device type the tensor will live on (<code>torch_kCPU</code> or <code>torch_kCUDA</code>)</p>
+<p>Device type the tensor will live on (<code>torch_kCPU</code> or a GPU device type)</p>
             </td>
         </tr>
         <tr>
@@ -10933,7 +10934,7 @@ parameter
             <td>::</td>
             <td><strong>device_index</strong></td>
             <td>
-<p>Device index to use for <code>torch_kCUDA</code> case</p>
+<p>Device index for GPU devices</p>
             </td>
         </tr>
         <tr>
@@ -11033,7 +11034,7 @@ parameter
             <td>::</td>
             <td><strong>device_type</strong></td>
             <td>
-<p>Device type the tensor will live on (<code>torch_kCPU</code> or <code>torch_kCUDA</code>)</p>
+<p>Device type the tensor will live on (<code>torch_kCPU</code> or a GPU device type)</p>
             </td>
         </tr>
         <tr>
@@ -11048,7 +11049,7 @@ parameter
             <td>::</td>
             <td><strong>device_index</strong></td>
             <td>
-<p>Device index to use for <code>torch_kCUDA</code> case</p>
+<p>Device index for GPU devices</p>
             </td>
         </tr>
         <tr>
@@ -11133,7 +11134,7 @@ parameter
             <td>::</td>
             <td><strong>device_type</strong></td>
             <td>
-<p>Device type the tensor will live on (<code>torch_kCPU</code> or <code>torch_kCUDA</code>)</p>
+<p>Device type the tensor will live on (<code>torch_kCPU</code> or a GPU device type)</p>
             </td>
         </tr>
         <tr>
@@ -11148,7 +11149,7 @@ parameter
             <td>::</td>
             <td><strong>device_index</strong></td>
             <td>
-<p>Device index to use for <code>torch_kCUDA</code> case</p>
+<p>Device index for GPU devices</p>
             </td>
         </tr>
         <tr>
@@ -11248,7 +11249,7 @@ parameter
             <td>::</td>
             <td><strong>device_type</strong></td>
             <td>
-<p>Device type the tensor will live on (<code>torch_kCPU</code> or <code>torch_kCUDA</code>)</p>
+<p>Device type the tensor will live on (<code>torch_kCPU</code> or a GPU device type)</p>
             </td>
         </tr>
         <tr>
@@ -11263,7 +11264,7 @@ parameter
             <td>::</td>
             <td><strong>device_index</strong></td>
             <td>
-<p>Device index to use for <code>torch_kCUDA</code> case</p>
+<p>Device index for GPU devices</p>
             </td>
         </tr>
         <tr>
@@ -11348,7 +11349,7 @@ parameter
             <td>::</td>
             <td><strong>device_type</strong></td>
             <td>
-<p>Device type the tensor will live on (<code>torch_kCPU</code> or <code>torch_kCUDA</code>)</p>
+<p>Device type the tensor will live on (<code>torch_kCPU</code> or a GPU device type)</p>
             </td>
         </tr>
         <tr>
@@ -11363,7 +11364,7 @@ parameter
             <td>::</td>
             <td><strong>device_index</strong></td>
             <td>
-<p>Device index to use for <code>torch_kCUDA</code> case</p>
+<p>Device index for GPU devices</p>
             </td>
         </tr>
         <tr>
@@ -11463,7 +11464,7 @@ parameter
             <td>::</td>
             <td><strong>device_type</strong></td>
             <td>
-<p>Device type the tensor will live on (<code>torch_kCPU</code> or <code>torch_kCUDA</code>)</p>
+<p>Device type the tensor will live on (<code>torch_kCPU</code> or a GPU device type)</p>
             </td>
         </tr>
         <tr>
@@ -11478,7 +11479,7 @@ parameter
             <td>::</td>
             <td><strong>device_index</strong></td>
             <td>
-<p>Device index to use for <code>torch_kCUDA</code> case</p>
+<p>Device index for GPU devices</p>
             </td>
         </tr>
         <tr>
@@ -11563,7 +11564,7 @@ parameter
             <td>::</td>
             <td><strong>device_type</strong></td>
             <td>
-<p>Device type the tensor will live on (<code>torch_kCPU</code> or <code>torch_kCUDA</code>)</p>
+<p>Device type the tensor will live on (<code>torch_kCPU</code> or a GPU device type)</p>
             </td>
         </tr>
         <tr>
@@ -11578,7 +11579,7 @@ parameter
             <td>::</td>
             <td><strong>device_index</strong></td>
             <td>
-<p>Device index to use for <code>torch_kCUDA</code> case</p>
+<p>Device index for GPU devices</p>
             </td>
         </tr>
         <tr>
@@ -11678,7 +11679,7 @@ parameter
             <td>::</td>
             <td><strong>device_type</strong></td>
             <td>
-<p>Device type the tensor will live on (<code>torch_kCPU</code> or <code>torch_kCUDA</code>)</p>
+<p>Device type the tensor will live on (<code>torch_kCPU</code> or a GPU device type)</p>
             </td>
         </tr>
         <tr>
@@ -11693,7 +11694,7 @@ parameter
             <td>::</td>
             <td><strong>device_index</strong></td>
             <td>
-<p>Device index to use for <code>torch_kCUDA</code> case</p>
+<p>Device index for GPU devices</p>
             </td>
         </tr>
         <tr>
@@ -11778,7 +11779,7 @@ parameter
             <td>::</td>
             <td><strong>device_type</strong></td>
             <td>
-<p>Device type the tensor will live on (<code>torch_kCPU</code> or <code>torch_kCUDA</code>)</p>
+<p>Device type the tensor will live on (<code>torch_kCPU</code> or a GPU device type)</p>
             </td>
         </tr>
         <tr>
@@ -11793,7 +11794,7 @@ parameter
             <td>::</td>
             <td><strong>device_index</strong></td>
             <td>
-<p>Device index to use for <code>torch_kCUDA</code> case</p>
+<p>Device index for GPU devices</p>
             </td>
         </tr>
         <tr>
@@ -11893,7 +11894,7 @@ parameter
             <td>::</td>
             <td><strong>device_type</strong></td>
             <td>
-<p>Device type the tensor will live on (<code>torch_kCPU</code> or <code>torch_kCUDA</code>)</p>
+<p>Device type the tensor will live on (<code>torch_kCPU</code> or a GPU device type)</p>
             </td>
         </tr>
         <tr>
@@ -11908,7 +11909,7 @@ parameter
             <td>::</td>
             <td><strong>device_index</strong></td>
             <td>
-<p>Device index to use for <code>torch_kCUDA</code> case</p>
+<p>Device index for GPU devices</p>
             </td>
         </tr>
         <tr>
@@ -11993,7 +11994,7 @@ parameter
             <td>::</td>
             <td><strong>device_type</strong></td>
             <td>
-<p>Device type the tensor will live on (<code>torch_kCPU</code> or <code>torch_kCUDA</code>)</p>
+<p>Device type the tensor will live on (<code>torch_kCPU</code> or a GPU device type)</p>
             </td>
         </tr>
         <tr>
@@ -12008,7 +12009,7 @@ parameter
             <td>::</td>
             <td><strong>device_index</strong></td>
             <td>
-<p>Device index to use for <code>torch_kCUDA</code> case</p>
+<p>Device index for GPU devices</p>
             </td>
         </tr>
         <tr>
@@ -12108,7 +12109,7 @@ parameter
             <td>::</td>
             <td><strong>device_type</strong></td>
             <td>
-<p>Device type the tensor will live on (<code>torch_kCPU</code> or <code>torch_kCUDA</code>)</p>
+<p>Device type the tensor will live on (<code>torch_kCPU</code> or a GPU device type)</p>
             </td>
         </tr>
         <tr>
@@ -12123,7 +12124,7 @@ parameter
             <td>::</td>
             <td><strong>device_index</strong></td>
             <td>
-<p>Device index to use for <code>torch_kCUDA</code> case</p>
+<p>Device index for GPU devices</p>
             </td>
         </tr>
         <tr>
@@ -12208,7 +12209,7 @@ parameter
             <td>::</td>
             <td><strong>device_type</strong></td>
             <td>
-<p>Device type the tensor will live on (<code>torch_kCPU</code> or <code>torch_kCUDA</code>)</p>
+<p>Device type the tensor will live on (<code>torch_kCPU</code> or a GPU device type)</p>
             </td>
         </tr>
         <tr>
@@ -12223,7 +12224,7 @@ parameter
             <td>::</td>
             <td><strong>device_index</strong></td>
             <td>
-<p>Device index to use for <code>torch_kCUDA</code> case</p>
+<p>Device index for GPU devices</p>
             </td>
         </tr>
         <tr>
@@ -12323,7 +12324,7 @@ parameter
             <td>::</td>
             <td><strong>device_type</strong></td>
             <td>
-<p>Device type the tensor will live on (<code>torch_kCPU</code> or <code>torch_kCUDA</code>)</p>
+<p>Device type the tensor will live on (<code>torch_kCPU</code> or a GPU device type)</p>
             </td>
         </tr>
         <tr>
@@ -12338,7 +12339,7 @@ parameter
             <td>::</td>
             <td><strong>device_index</strong></td>
             <td>
-<p>Device index to use for <code>torch_kCUDA</code> case</p>
+<p>Device index for GPU devices</p>
             </td>
         </tr>
         <tr>
@@ -12423,7 +12424,7 @@ parameter
             <td>::</td>
             <td><strong>device_type</strong></td>
             <td>
-<p>Device type the tensor will live on (<code>torch_kCPU</code> or <code>torch_kCUDA</code>)</p>
+<p>Device type the tensor will live on (<code>torch_kCPU</code> or a GPU device type)</p>
             </td>
         </tr>
         <tr>
@@ -12438,7 +12439,7 @@ parameter
             <td>::</td>
             <td><strong>device_index</strong></td>
             <td>
-<p>Device index to use for <code>torch_kCUDA</code> case</p>
+<p>Device index for GPU devices</p>
             </td>
         </tr>
         <tr>
@@ -12538,7 +12539,7 @@ parameter
             <td>::</td>
             <td><strong>device_type</strong></td>
             <td>
-<p>Device type the tensor will live on (<code>torch_kCPU</code> or <code>torch_kCUDA</code>)</p>
+<p>Device type the tensor will live on (<code>torch_kCPU</code> or a GPU device type)</p>
             </td>
         </tr>
         <tr>
@@ -12553,7 +12554,7 @@ parameter
             <td>::</td>
             <td><strong>device_index</strong></td>
             <td>
-<p>Device index to use for <code>torch_kCUDA</code> case</p>
+<p>Device index for GPU devices</p>
             </td>
         </tr>
         <tr>
@@ -12638,7 +12639,7 @@ parameter
             <td>::</td>
             <td><strong>device_type</strong></td>
             <td>
-<p>Device type the tensor will live on (<code>torch_kCPU</code> or <code>torch_kCUDA</code>)</p>
+<p>Device type the tensor will live on (<code>torch_kCPU</code> or a GPU device type)</p>
             </td>
         </tr>
         <tr>
@@ -12653,7 +12654,7 @@ parameter
             <td>::</td>
             <td><strong>device_index</strong></td>
             <td>
-<p>Device index to use for <code>torch_kCUDA</code> case</p>
+<p>Device index for GPU devices</p>
             </td>
         </tr>
         <tr>
@@ -12753,7 +12754,7 @@ parameter
             <td>::</td>
             <td><strong>device_type</strong></td>
             <td>
-<p>Device type the tensor will live on (<code>torch_kCPU</code> or <code>torch_kCUDA</code>)</p>
+<p>Device type the tensor will live on (<code>torch_kCPU</code> or a GPU device type)</p>
             </td>
         </tr>
         <tr>
@@ -12768,7 +12769,7 @@ parameter
             <td>::</td>
             <td><strong>device_index</strong></td>
             <td>
-<p>Device index to use for <code>torch_kCUDA</code> case</p>
+<p>Device index for GPU devices</p>
             </td>
         </tr>
         <tr>
@@ -12853,7 +12854,7 @@ parameter
             <td>::</td>
             <td><strong>device_type</strong></td>
             <td>
-<p>Device type the tensor will live on (<code>torch_kCPU</code> or <code>torch_kCUDA</code>)</p>
+<p>Device type the tensor will live on (<code>torch_kCPU</code> or a GPU device type)</p>
             </td>
         </tr>
         <tr>
@@ -12868,7 +12869,7 @@ parameter
             <td>::</td>
             <td><strong>device_index</strong></td>
             <td>
-<p>Device index to use for <code>torch_kCUDA</code> case</p>
+<p>Device index for GPU devices</p>
             </td>
         </tr>
         <tr>
@@ -12968,7 +12969,7 @@ parameter
             <td>::</td>
             <td><strong>device_type</strong></td>
             <td>
-<p>Device type the tensor will live on (<code>torch_kCPU</code> or <code>torch_kCUDA</code>)</p>
+<p>Device type the tensor will live on (<code>torch_kCPU</code> or a GPU device type)</p>
             </td>
         </tr>
         <tr>
@@ -12983,7 +12984,7 @@ parameter
             <td>::</td>
             <td><strong>device_index</strong></td>
             <td>
-<p>Device index to use for <code>torch_kCUDA</code> case</p>
+<p>Device index for GPU devices</p>
             </td>
         </tr>
         <tr>
@@ -13068,7 +13069,7 @@ parameter
             <td>::</td>
             <td><strong>device_type</strong></td>
             <td>
-<p>Device type the tensor will live on (<code>torch_kCPU</code> or <code>torch_kCUDA</code>)</p>
+<p>Device type the tensor will live on (<code>torch_kCPU</code> or a GPU device type)</p>
             </td>
         </tr>
         <tr>
@@ -13083,7 +13084,7 @@ parameter
             <td>::</td>
             <td><strong>device_index</strong></td>
             <td>
-<p>Device index to use for <code>torch_kCUDA</code> case</p>
+<p>Device index for GPU devices</p>
             </td>
         </tr>
         <tr>
@@ -13183,7 +13184,7 @@ parameter
             <td>::</td>
             <td><strong>device_type</strong></td>
             <td>
-<p>Device type the tensor will live on (<code>torch_kCPU</code> or <code>torch_kCUDA</code>)</p>
+<p>Device type the tensor will live on (<code>torch_kCPU</code> or a GPU device type)</p>
             </td>
         </tr>
         <tr>
@@ -13198,7 +13199,7 @@ parameter
             <td>::</td>
             <td><strong>device_index</strong></td>
             <td>
-<p>Device index to use for <code>torch_kCUDA</code> case</p>
+<p>Device index for GPU devices</p>
             </td>
         </tr>
         <tr>
@@ -13283,7 +13284,7 @@ parameter
             <td>::</td>
             <td><strong>device_type</strong></td>
             <td>
-<p>Device type the tensor will live on (<code>torch_kCPU</code> or <code>torch_kCUDA</code>)</p>
+<p>Device type the tensor will live on (<code>torch_kCPU</code> or a GPU device type)</p>
             </td>
         </tr>
         <tr>
@@ -13298,7 +13299,7 @@ parameter
             <td>::</td>
             <td><strong>device_index</strong></td>
             <td>
-<p>Device index to use for <code>torch_kCUDA</code> case</p>
+<p>Device index for GPU devices</p>
             </td>
         </tr>
         <tr>
@@ -13398,7 +13399,7 @@ parameter
             <td>::</td>
             <td><strong>device_type</strong></td>
             <td>
-<p>Device type the tensor will live on (<code>torch_kCPU</code> or <code>torch_kCUDA</code>)</p>
+<p>Device type the tensor will live on (<code>torch_kCPU</code> or a GPU device type)</p>
             </td>
         </tr>
         <tr>
@@ -13413,7 +13414,7 @@ parameter
             <td>::</td>
             <td><strong>device_index</strong></td>
             <td>
-<p>Device index to use for <code>torch_kCUDA</code> case</p>
+<p>Device index for GPU devices</p>
             </td>
         </tr>
         <tr>
@@ -13498,7 +13499,7 @@ parameter
             <td>::</td>
             <td><strong>device_type</strong></td>
             <td>
-<p>Device type the tensor will live on (<code>torch_kCPU</code> or <code>torch_kCUDA</code>)</p>
+<p>Device type the tensor will live on (<code>torch_kCPU</code> or a GPU device type)</p>
             </td>
         </tr>
         <tr>
@@ -13513,7 +13514,7 @@ parameter
             <td>::</td>
             <td><strong>device_index</strong></td>
             <td>
-<p>Device index to use for <code>torch_kCUDA</code> case</p>
+<p>Device index for GPU devices</p>
             </td>
         </tr>
         <tr>
@@ -13613,7 +13614,7 @@ parameter
             <td>::</td>
             <td><strong>device_type</strong></td>
             <td>
-<p>Device type the tensor will live on (<code>torch_kCPU</code> or <code>torch_kCUDA</code>)</p>
+<p>Device type the tensor will live on (<code>torch_kCPU</code> or a GPU device type)</p>
             </td>
         </tr>
         <tr>
@@ -13628,7 +13629,7 @@ parameter
             <td>::</td>
             <td><strong>device_index</strong></td>
             <td>
-<p>Device index to use for <code>torch_kCUDA</code> case</p>
+<p>Device index for GPU devices</p>
             </td>
         </tr>
         <tr>
@@ -13713,7 +13714,7 @@ parameter
             <td>::</td>
             <td><strong>device_type</strong></td>
             <td>
-<p>Device type the tensor will live on (<code>torch_kCPU</code> or <code>torch_kCUDA</code>)</p>
+<p>Device type the tensor will live on (<code>torch_kCPU</code> or a GPU device type)</p>
             </td>
         </tr>
         <tr>
@@ -13728,7 +13729,7 @@ parameter
             <td>::</td>
             <td><strong>device_index</strong></td>
             <td>
-<p>Device index to use for <code>torch_kCUDA</code> case</p>
+<p>Device index for GPU devices</p>
             </td>
         </tr>
         <tr>
@@ -13828,7 +13829,7 @@ parameter
             <td>::</td>
             <td><strong>device_type</strong></td>
             <td>
-<p>Device type the tensor will live on (<code>torch_kCPU</code> or <code>torch_kCUDA</code>)</p>
+<p>Device type the tensor will live on (<code>torch_kCPU</code> or a GPU device type)</p>
             </td>
         </tr>
         <tr>
@@ -13843,7 +13844,7 @@ parameter
             <td>::</td>
             <td><strong>device_index</strong></td>
             <td>
-<p>Device index to use for <code>torch_kCUDA</code> case</p>
+<p>Device index for GPU devices</p>
             </td>
         </tr>
         <tr>
@@ -13928,7 +13929,7 @@ parameter
             <td>::</td>
             <td><strong>device_type</strong></td>
             <td>
-<p>Device type the tensor will live on (<code>torch_kCPU</code> or <code>torch_kCUDA</code>)</p>
+<p>Device type the tensor will live on (<code>torch_kCPU</code> or a GPU device type)</p>
             </td>
         </tr>
         <tr>
@@ -13943,7 +13944,7 @@ parameter
             <td>::</td>
             <td><strong>device_index</strong></td>
             <td>
-<p>Device index to use for <code>torch_kCUDA</code> case</p>
+<p>Device index for GPU devices</p>
             </td>
         </tr>
         <tr>
@@ -14043,7 +14044,7 @@ parameter
             <td>::</td>
             <td><strong>device_type</strong></td>
             <td>
-<p>Device type the tensor will live on (<code>torch_kCPU</code> or <code>torch_kCUDA</code>)</p>
+<p>Device type the tensor will live on (<code>torch_kCPU</code> or a GPU device type)</p>
             </td>
         </tr>
         <tr>
@@ -14058,7 +14059,7 @@ parameter
             <td>::</td>
             <td><strong>device_index</strong></td>
             <td>
-<p>Device index to use for <code>torch_kCUDA</code> case</p>
+<p>Device index for GPU devices</p>
             </td>
         </tr>
         <tr>
@@ -14143,7 +14144,7 @@ parameter
             <td>::</td>
             <td><strong>device_type</strong></td>
             <td>
-<p>Device type the tensor will live on (<code>torch_kCPU</code> or <code>torch_kCUDA</code>)</p>
+<p>Device type the tensor will live on (<code>torch_kCPU</code> or a GPU device type)</p>
             </td>
         </tr>
         <tr>
@@ -14158,7 +14159,7 @@ parameter
             <td>::</td>
             <td><strong>device_index</strong></td>
             <td>
-<p>Device index to use for <code>torch_kCUDA</code> case</p>
+<p>Device index for GPU devices</p>
             </td>
         </tr>
         <tr>
@@ -14258,7 +14259,7 @@ parameter
             <td>::</td>
             <td><strong>device_type</strong></td>
             <td>
-<p>Device type the tensor will live on (<code>torch_kCPU</code> or <code>torch_kCUDA</code>)</p>
+<p>Device type the tensor will live on (<code>torch_kCPU</code> or a GPU device type)</p>
             </td>
         </tr>
         <tr>
@@ -14273,7 +14274,7 @@ parameter
             <td>::</td>
             <td><strong>device_index</strong></td>
             <td>
-<p>Device index to use for <code>torch_kCUDA</code> case</p>
+<p>Device index for GPU devices</p>
             </td>
         </tr>
         <tr>
@@ -14358,7 +14359,7 @@ parameter
             <td>::</td>
             <td><strong>device_type</strong></td>
             <td>
-<p>Device type the tensor will live on (<code>torch_kCPU</code> or <code>torch_kCUDA</code>)</p>
+<p>Device type the tensor will live on (<code>torch_kCPU</code> or a GPU device type)</p>
             </td>
         </tr>
         <tr>
@@ -14373,7 +14374,7 @@ parameter
             <td>::</td>
             <td><strong>device_index</strong></td>
             <td>
-<p>Device index to use for <code>torch_kCUDA</code> case</p>
+<p>Device index for GPU devices</p>
             </td>
         </tr>
         <tr>
@@ -14473,7 +14474,7 @@ parameter
             <td>::</td>
             <td><strong>device_type</strong></td>
             <td>
-<p>Device type the tensor will live on (<code>torch_kCPU</code> or <code>torch_kCUDA</code>)</p>
+<p>Device type the tensor will live on (<code>torch_kCPU</code> or a GPU device type)</p>
             </td>
         </tr>
         <tr>
@@ -14488,7 +14489,7 @@ parameter
             <td>::</td>
             <td><strong>device_index</strong></td>
             <td>
-<p>Device index to use for <code>torch_kCUDA</code> case</p>
+<p>Device index for GPU devices</p>
             </td>
         </tr>
         <tr>
@@ -14573,7 +14574,7 @@ parameter
             <td>::</td>
             <td><strong>device_type</strong></td>
             <td>
-<p>Device type the tensor will live on (<code>torch_kCPU</code> or <code>torch_kCUDA</code>)</p>
+<p>Device type the tensor will live on (<code>torch_kCPU</code> or a GPU device type)</p>
             </td>
         </tr>
         <tr>
@@ -14588,7 +14589,7 @@ parameter
             <td>::</td>
             <td><strong>device_index</strong></td>
             <td>
-<p>Device index to use for <code>torch_kCUDA</code> case</p>
+<p>Device index for GPU devices</p>
             </td>
         </tr>
         <tr>
@@ -14688,7 +14689,7 @@ parameter
             <td>::</td>
             <td><strong>device_type</strong></td>
             <td>
-<p>Device type the tensor will live on (<code>torch_kCPU</code> or <code>torch_kCUDA</code>)</p>
+<p>Device type the tensor will live on (<code>torch_kCPU</code> or a GPU device type)</p>
             </td>
         </tr>
         <tr>
@@ -14703,7 +14704,7 @@ parameter
             <td>::</td>
             <td><strong>device_index</strong></td>
             <td>
-<p>Device index to use for <code>torch_kCUDA</code> case</p>
+<p>Device index for GPU devices</p>
             </td>
         </tr>
         <tr>
@@ -14788,7 +14789,7 @@ parameter
             <td>::</td>
             <td><strong>device_type</strong></td>
             <td>
-<p>Device type the tensor will live on (<code>torch_kCPU</code> or <code>torch_kCUDA</code>)</p>
+<p>Device type the tensor will live on (<code>torch_kCPU</code> or a GPU device type)</p>
             </td>
         </tr>
         <tr>
@@ -14803,7 +14804,7 @@ parameter
             <td>::</td>
             <td><strong>device_index</strong></td>
             <td>
-<p>Device index to use for <code>torch_kCUDA</code> case</p>
+<p>Device index for GPU devices</p>
             </td>
         </tr>
         <tr>
@@ -14903,7 +14904,7 @@ parameter
             <td>::</td>
             <td><strong>device_type</strong></td>
             <td>
-<p>Device type the tensor will live on (<code>torch_kCPU</code> or <code>torch_kCUDA</code>)</p>
+<p>Device type the tensor will live on (<code>torch_kCPU</code> or a GPU device type)</p>
             </td>
         </tr>
         <tr>
@@ -14918,7 +14919,7 @@ parameter
             <td>::</td>
             <td><strong>device_index</strong></td>
             <td>
-<p>Device index to use for <code>torch_kCUDA</code> case</p>
+<p>Device index for GPU devices</p>
             </td>
         </tr>
         <tr>
@@ -15003,7 +15004,7 @@ parameter
             <td>::</td>
             <td><strong>device_type</strong></td>
             <td>
-<p>Device type the tensor will live on (<code>torch_kCPU</code> or <code>torch_kCUDA</code>)</p>
+<p>Device type the tensor will live on (<code>torch_kCPU</code> or a GPU device type)</p>
             </td>
         </tr>
         <tr>
@@ -15018,7 +15019,7 @@ parameter
             <td>::</td>
             <td><strong>device_index</strong></td>
             <td>
-<p>Device index to use for <code>torch_kCUDA</code> case</p>
+<p>Device index for GPU devices</p>
             </td>
         </tr>
         <tr>
@@ -15118,7 +15119,7 @@ parameter
             <td>::</td>
             <td><strong>device_type</strong></td>
             <td>
-<p>Device type the tensor will live on (<code>torch_kCPU</code> or <code>torch_kCUDA</code>)</p>
+<p>Device type the tensor will live on (<code>torch_kCPU</code> or a GPU device type)</p>
             </td>
         </tr>
         <tr>
@@ -15133,7 +15134,7 @@ parameter
             <td>::</td>
             <td><strong>device_index</strong></td>
             <td>
-<p>Device index to use for <code>torch_kCUDA</code> case</p>
+<p>Device index for GPU devices</p>
             </td>
         </tr>
         <tr>
@@ -15218,7 +15219,7 @@ parameter
             <td>::</td>
             <td><strong>device_type</strong></td>
             <td>
-<p>Device type the tensor will live on (<code>torch_kCPU</code> or <code>torch_kCUDA</code>)</p>
+<p>Device type the tensor will live on (<code>torch_kCPU</code> or a GPU device type)</p>
             </td>
         </tr>
         <tr>
@@ -15233,7 +15234,7 @@ parameter
             <td>::</td>
             <td><strong>device_index</strong></td>
             <td>
-<p>Device index to use for <code>torch_kCUDA</code> case</p>
+<p>Device index for GPU devices</p>
             </td>
         </tr>
         <tr>
@@ -15333,7 +15334,7 @@ parameter
             <td>::</td>
             <td><strong>device_type</strong></td>
             <td>
-<p>Device type the tensor will live on (<code>torch_kCPU</code> or <code>torch_kCUDA</code>)</p>
+<p>Device type the tensor will live on (<code>torch_kCPU</code> or a GPU device type)</p>
             </td>
         </tr>
         <tr>
@@ -15348,7 +15349,7 @@ parameter
             <td>::</td>
             <td><strong>device_index</strong></td>
             <td>
-<p>Device index to use for <code>torch_kCUDA</code> case</p>
+<p>Device index for GPU devices</p>
             </td>
         </tr>
         <tr>
@@ -15433,7 +15434,7 @@ parameter
             <td>::</td>
             <td><strong>device_type</strong></td>
             <td>
-<p>Device type the tensor will live on (<code>torch_kCPU</code> or <code>torch_kCUDA</code>)</p>
+<p>Device type the tensor will live on (<code>torch_kCPU</code> or a GPU device type)</p>
             </td>
         </tr>
         <tr>
@@ -15448,7 +15449,7 @@ parameter
             <td>::</td>
             <td><strong>device_index</strong></td>
             <td>
-<p>Device index to use for <code>torch_kCUDA</code> case</p>
+<p>Device index for GPU devices</p>
             </td>
         </tr>
         <tr>
@@ -15548,7 +15549,7 @@ parameter
             <td>::</td>
             <td><strong>device_type</strong></td>
             <td>
-<p>Device type the tensor will live on (<code>torch_kCPU</code> or <code>torch_kCUDA</code>)</p>
+<p>Device type the tensor will live on (<code>torch_kCPU</code> or a GPU device type)</p>
             </td>
         </tr>
         <tr>
@@ -15563,7 +15564,7 @@ parameter
             <td>::</td>
             <td><strong>device_index</strong></td>
             <td>
-<p>Device index to use for <code>torch_kCUDA</code> case</p>
+<p>Device index for GPU devices</p>
             </td>
         </tr>
         <tr>
@@ -15648,7 +15649,7 @@ parameter
             <td>::</td>
             <td><strong>device_type</strong></td>
             <td>
-<p>Device type the tensor will live on (<code>torch_kCPU</code> or <code>torch_kCUDA</code>)</p>
+<p>Device type the tensor will live on (<code>torch_kCPU</code> or a GPU device type)</p>
             </td>
         </tr>
         <tr>
@@ -15663,7 +15664,7 @@ parameter
             <td>::</td>
             <td><strong>device_index</strong></td>
             <td>
-<p>Device index to use for <code>torch_kCUDA</code> case</p>
+<p>Device index for GPU devices</p>
             </td>
         </tr>
         <tr>
@@ -15763,7 +15764,7 @@ parameter
             <td>::</td>
             <td><strong>device_type</strong></td>
             <td>
-<p>Device type the tensor will live on (<code>torch_kCPU</code> or <code>torch_kCUDA</code>)</p>
+<p>Device type the tensor will live on (<code>torch_kCPU</code> or a GPU device type)</p>
             </td>
         </tr>
         <tr>
@@ -15778,7 +15779,7 @@ parameter
             <td>::</td>
             <td><strong>device_index</strong></td>
             <td>
-<p>Device index to use for <code>torch_kCUDA</code> case</p>
+<p>Device index for GPU devices</p>
             </td>
         </tr>
         <tr>
@@ -15863,7 +15864,7 @@ parameter
             <td>::</td>
             <td><strong>device_type</strong></td>
             <td>
-<p>Device type the tensor will live on (<code>torch_kCPU</code> or <code>torch_kCUDA</code>)</p>
+<p>Device type the tensor will live on (<code>torch_kCPU</code> or a GPU device type)</p>
             </td>
         </tr>
         <tr>
@@ -15878,7 +15879,7 @@ parameter
             <td>::</td>
             <td><strong>device_index</strong></td>
             <td>
-<p>Device index to use for <code>torch_kCUDA</code> case</p>
+<p>Device index for GPU devices</p>
             </td>
         </tr>
         <tr>
@@ -15978,7 +15979,7 @@ parameter
             <td>::</td>
             <td><strong>device_type</strong></td>
             <td>
-<p>Device type the tensor will live on (<code>torch_kCPU</code> or <code>torch_kCUDA</code>)</p>
+<p>Device type the tensor will live on (<code>torch_kCPU</code> or a GPU device type)</p>
             </td>
         </tr>
         <tr>
@@ -15993,7 +15994,7 @@ parameter
             <td>::</td>
             <td><strong>device_index</strong></td>
             <td>
-<p>Device index to use for <code>torch_kCUDA</code> case</p>
+<p>Device index for GPU devices</p>
             </td>
         </tr>
         <tr>
@@ -16078,7 +16079,7 @@ parameter
             <td>::</td>
             <td><strong>device_type</strong></td>
             <td>
-<p>Device type the tensor will live on (<code>torch_kCPU</code> or <code>torch_kCUDA</code>)</p>
+<p>Device type the tensor will live on (<code>torch_kCPU</code> or a GPU device type)</p>
             </td>
         </tr>
         <tr>
@@ -16093,7 +16094,7 @@ parameter
             <td>::</td>
             <td><strong>device_index</strong></td>
             <td>
-<p>Device index to use for <code>torch_kCUDA</code> case</p>
+<p>Device index for GPU devices</p>
             </td>
         </tr>
         <tr>
@@ -16193,7 +16194,7 @@ parameter
             <td>::</td>
             <td><strong>device_type</strong></td>
             <td>
-<p>Device type the tensor will live on (<code>torch_kCPU</code> or <code>torch_kCUDA</code>)</p>
+<p>Device type the tensor will live on (<code>torch_kCPU</code> or a GPU device type)</p>
             </td>
         </tr>
         <tr>
@@ -16208,7 +16209,7 @@ parameter
             <td>::</td>
             <td><strong>device_index</strong></td>
             <td>
-<p>Device index to use for <code>torch_kCUDA</code> case</p>
+<p>Device index for GPU devices</p>
             </td>
         </tr>
         <tr>
@@ -16293,7 +16294,7 @@ parameter
             <td>::</td>
             <td><strong>device_type</strong></td>
             <td>
-<p>Device type the tensor will live on (<code>torch_kCPU</code> or <code>torch_kCUDA</code>)</p>
+<p>Device type the tensor will live on (<code>torch_kCPU</code> or a GPU device type)</p>
             </td>
         </tr>
         <tr>
@@ -16308,7 +16309,7 @@ parameter
             <td>::</td>
             <td><strong>device_index</strong></td>
             <td>
-<p>Device index to use for <code>torch_kCUDA</code> case</p>
+<p>Device index for GPU devices</p>
             </td>
         </tr>
         <tr>
@@ -16454,7 +16455,7 @@ parameter
             <td>::</td>
             <td><strong>device_type</strong></td>
             <td>
-<p>Device type the tensor will live on (<code>torch_kCPU</code> or <code>torch_kCUDA</code>)</p>
+<p>Device type the tensor will live on (<code>torch_kCPU</code> or a GPU device type)</p>
             </td>
         </tr>
         <tr>
@@ -16469,7 +16470,7 @@ parameter
             <td>::</td>
             <td><strong>device_index</strong></td>
             <td>
-<p>Device index to use for <code>torch_kCUDA</code> case</p>
+<p>Device index for GPU devices</p>
             </td>
         </tr>
         <tr>
@@ -16694,7 +16695,7 @@ parameter
             <td>::</td>
             <td><strong>device_type</strong></td>
             <td>
-<p>Device type the tensor will live on (<code>torch_kCPU</code> or <code>torch_kCUDA</code>)</p>
+<p>Device type the tensor will live on (<code>torch_kCPU</code> or a GPU device type)</p>
             </td>
         </tr>
         <tr>
@@ -16709,7 +16710,7 @@ parameter
             <td>::</td>
             <td><strong>device_index</strong></td>
             <td>
-<p>Device index to use for <code>torch_kCUDA</code> case</p>
+<p>Device index for GPU devices</p>
             </td>
         </tr>
         <tr>
@@ -17069,7 +17070,7 @@ parameter
             <td>::</td>
             <td><strong>device_type</strong></td>
             <td>
-<p>Device type the tensor will live on (<code>torch_kCPU</code> or <code>torch_kCUDA</code>)</p>
+<p>Device type the tensor will live on (<code>torch_kCPU</code> or a GPU device type)</p>
             </td>
         </tr>
         <tr>
@@ -17084,7 +17085,7 @@ parameter
             <td>::</td>
             <td><strong>device_index</strong></td>
             <td>
-<p>Device index to use for <code>torch_kCUDA</code> case</p>
+<p>Device index for GPU devices</p>
             </td>
         </tr>
         <tr>
@@ -17125,7 +17126,7 @@ parameter
           <div class="col">
             <p>
               FTorch
- was developed by ICCS Cambridge<br>              &copy; 2025 <a rel="license" href="https://opensource.org/licenses/MIT">MIT</a>
+ was developed by ICCS Cambridge<br>              &copy; 2026 <a rel="license" href="https://opensource.org/licenses/MIT">MIT</a>
 </p>
           </div>
           <div class="col">
