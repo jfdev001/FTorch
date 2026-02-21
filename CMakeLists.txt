@@ -253,3 +253,6 @@ install(
   "${PROJECT_BINARY_DIR}/${LIB_NAME}.pc"
   DESTINATION "${CMAKE_INSTALL_LIBDIR}/pkgconfig"
 )
+
+# Enable packaging and custom configuration
+include(CPack)
