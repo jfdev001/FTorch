@@ -264,6 +264,6 @@ install(
 #   CPACK_PROJECT_CONFIG_FILE 
 #   "${PROJECT_BINARY_DIR}/FTorchCPackOptions.cmake")
 
-# NOTE: This is the approach taken by opencv.. though explicitliy set
-# everything related to the package in one file... which is also an option...
+# NOTE: This is the approach taken by opencv.. explicitliy set
+# everything related to the package in one file...
 include("${PROJECT_SOURCE_DIR}/cmake/FTorchPackaging.cmake")

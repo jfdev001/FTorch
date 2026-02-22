@@ -12,8 +12,10 @@ set(CPACK_SET_DESTDIR "ON")  # Use CMAKE_INSTALL_PREFIX for pkg install dest
 set(CPACK_PACKAGE_VERSION_MAJOR "${CMAKE_PROJECT_VERSION_MAJOR}")
 set(CPACK_PACKAGE_VERSION_MINOR "${CMAKE_PROJECT_VERSION_MINOR}")
 set(CPACK_PACKAGE_VERSION_PATCH "${CMAKE_PROJECT_VERSION_PATCH}")
+set(CPACK_PACKAGE_VERSION "${CMAKE_PROJECT_VERSION}")
 
 # Explicitly set architecture 
+# NOTE: `dpkg-architecture --list-known` for all debian options
 if(X86)
   set(CPACK_DEBIAN_PACKAGE_ARCHITECTURE "i386")
   set(CPACK_RPM_PACKAGE_ARCHITECTURE "i686")
@@ -51,7 +53,6 @@ set(
   CPACK_SOURCE_PACKAGE_FILE_NAME 
   "${CMAKE_PROJECT_NAME}-${CPACK_PACKAGE_VERSION}-${FTORCH_PACKAGE_ARCH_SUFFIX}")
 
-
 # NOTE: not sure what the point of the component install is ...
 # defaults handled by debian package are also okay... 
 # NOTE: this is extra for now... rpm options
@@ -59,8 +60,15 @@ set(
 # set(CPACK_RPM_PACKAGE_SUMMARY ${CPACK_PACKAGE_DESCRIPTION_SUMMARY})
 # set(CPACK_RPM_PACKAGE_DESCRIPTION ${CPACK_PACKAGE_DESCRIPTION})
 
+############
 #deb options
-# set(CPACK_DEB_COMPONENT_INSTALL TRUE) # TODO: not sure what this means ...
+############
+# NOTE:: This separates the different parts of the debian package i guess... 
+# you can add a depnednecies section or you could make the package completely
+# standalone... in the context of something that is not released on the debian
+# store... it makes much more sense to just keep this as standalone
+# set(CPACK_DEB_COMPONENT_INSTALL TRUE) 
+
 # set(CPACK_DEBIAN_PACKAGE_PRIORITY "optional")
 # set(CPACK_DEBIAN_PACKAGE_SECTION "libs")
 
@@ -68,5 +76,6 @@ set(
 set(CPACK_DEBIAN_PACKAGE_SHLIBDEPS TRUE)
 set(CPACK_COMPONENT_LIBS_REQUIRED TRUE)
 
+# TODO: handle something about GPUs ??
 
 include(CPack)
