@@ -246,13 +246,24 @@ install(
 configure_file(
   "${PROJECT_SOURCE_DIR}/cmake/template.pc"
   "${PROJECT_BINARY_DIR}/${LIB_NAME}.pc"
-  @ONLY
-)
+  @ONLY)
 install(
   FILES
   "${PROJECT_BINARY_DIR}/${LIB_NAME}.pc"
-  DESTINATION "${CMAKE_INSTALL_LIBDIR}/pkgconfig"
-)
+  DESTINATION "${CMAKE_INSTALL_LIBDIR}/pkgconfig")
 
-# Enable packaging and custom configuration
-include(CPack)
+# CPack stuff 
+# TODO: could do the configure file thing below, include the those cpack options
+# then include CPack or just put include cpack in the cpack optiosn file and
+# includ ethat file ...
+# configure_file( # recommendation via cmake docs...
+#   "${PROJECT_SOURCE_DIR}/cmake/FTorchCPackOptions.cmake.in"
+#   "${PROJECT_BINARY_DIR}/FTorchCPackOptions.cmake"
+#   @ONLY)
+# set(
+#   CPACK_PROJECT_CONFIG_FILE 
+#   "${PROJECT_BINARY_DIR}/FTorchCPackOptions.cmake")
+
+# NOTE: This is the approach taken by opencv.. though explicitliy set
+# everything related to the package in one file... which is also an option...
+include("${PROJECT_SOURCE_DIR}/cmake/FTorchPackaging.cmake")

@@ -1,0 +1,15 @@
+if(NOT EXISTS "${CMAKE_ROOT}/Modules/CPack.cmake")
+  message(STATUS "CPack is not found. SKIP")
+  return()
+endif()
+
+set(
+  CPACK_PACKAGE_VENDOR 
+  "University of Cambridge Institute of Computing for Climate Science")
+set(CPACK_PACKAGE_DESCRIPTION_SUMMARY "TODO: Summary")
+set(CPACK_PACKAGE_DESCRIPTION "TODO: Description")
+set(CPACK_SET_DESTDIR "ON")  # Use CMAKE_INSTALL_PREFIX for pkg install dest
+set(CPACK_PACKAGE_VERSION_MAJOR "@CMAKE_PROJECT_VERSION_MAJOR@")
+set(CPACK_PACKAGE_VERSION_MINOR "@CMAKE_PROJECT_VERSION_MINOR@")
+set(CPACK_PACKAGE_VERSION_PATCH "@CMAKE_PROJECT_VERSION_PATCH@")
+include(CPack)
