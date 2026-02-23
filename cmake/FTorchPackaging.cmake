@@ -6,6 +6,7 @@ endif()
 set(
   CPACK_PACKAGE_VENDOR 
   "University of Cambridge Institute of Computing for Climate Science")
+set(CPACK_PACKAGE_CONTACT "TODO: Jared Frazier (cscidev001@gmail.com)")
 set(CPACK_PACKAGE_DESCRIPTION_SUMMARY "TODO: Summary")
 set(CPACK_PACKAGE_DESCRIPTION "TODO: Description")
 set(CPACK_PACKAGE_VERSION_MAJOR "${CMAKE_PROJECT_VERSION_MAJOR}")
