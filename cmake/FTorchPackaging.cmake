@@ -3,12 +3,16 @@ if(NOT EXISTS "${CMAKE_ROOT}/Modules/CPack.cmake")
   return()
 endif()
 
+# Set package information
 set(
   CPACK_PACKAGE_VENDOR 
   "University of Cambridge Institute of Computing for Climate Science")
-set(CPACK_PACKAGE_CONTACT "TODO: Jared Frazier (cscidev001@gmail.com)")
-set(CPACK_PACKAGE_DESCRIPTION_SUMMARY "TODO: Summary")
-set(CPACK_PACKAGE_DESCRIPTION "TODO: Description")
+set(CPACK_PACKAGE_CONTACT "Jared Frazier (cscidev001@gmail.com)")
+set(CPACK_PACKAGE_DESCRIPTION_SUMMARY "Fortran interface to PyTorch models")
+set(CPACK_PACKAGE_DESCRIPTION 
+  "FTorch is a library for calling PyTorch machine learning models directly
+  from Fortran code. It enables coupling TorchScript models trained in PyTorch
+  to existing Fortran applications without requiring Python at runtime.")
 set(CPACK_PACKAGE_VERSION_MAJOR "${CMAKE_PROJECT_VERSION_MAJOR}")
 set(CPACK_PACKAGE_VERSION_MINOR "${CMAKE_PROJECT_VERSION_MINOR}")
 set(CPACK_PACKAGE_VERSION_PATCH "${CMAKE_PROJECT_VERSION_PATCH}")
@@ -16,51 +20,17 @@ set(CPACK_PACKAGE_VERSION "${CMAKE_PROJECT_VERSION}")
 
 # Explicitly set architecture 
 set(CPACK_DEBIAN_PACKAGE_ARCHITECTURE "amd64")
-#set(CPACK_RPM_PACKAGE_ARCHITECTURE "x86_64")
-
-# TODO: this is not set at configure time
-message(STATUS "${CPACK_GENERATOR}")
-#if(CPACK_GENERATOR STREQUAL "DEB")
-  set(FTORCH_PACKAGE_ARCH_SUFFIX ${CPACK_DEBIAN_PACKAGE_ARCHITECTURE})
-#elseif(CPACK_GENERATOR STREQUAL "RPM")
-#   set(FTORCH_PACKAGE_ARCH_SUFFIX ${CPACK_RPM_PACKAGE_ARCHITECTURE})
-# else()
-#   set(FTORCH_PACKAGE_ARCH_SUFFIX ${CMAKE_SYSTEM_PROCESSOR})
-# endif()
-message(STATUS "${FTORCH_PACKAGE_ARCH_SUFFIX}")
 
 # Set the names of the package files that get generated 
-# (e.g., FTorch-1.0.0-amd64)
 set(
   CPACK_PACKAGE_FILE_NAME 
-  "${CMAKE_PROJECT_NAME}-${CPACK_PACKAGE_VERSION}-${FTORCH_PACKAGE_ARCH_SUFFIX}")
+  "${CMAKE_PROJECT_NAME}-${CPACK_PACKAGE_VERSION}-${CPACK_DEBIAN_PACKAGE_ARCHITECTURE}")
 set(
   CPACK_SOURCE_PACKAGE_FILE_NAME 
-  "${CMAKE_PROJECT_NAME}-${CPACK_PACKAGE_VERSION}-${FTORCH_PACKAGE_ARCH_SUFFIX}")
-
-# NOTE: not sure what the point of the component install is ...
-# defaults handled by debian package are also okay... 
-# NOTE: this is extra for now... rpm options
-# set(CPACK_RPM_COMPONENT_INSTALL TRUE)
-# set(CPACK_RPM_PACKAGE_SUMMARY ${CPACK_PACKAGE_DESCRIPTION_SUMMARY})
-# set(CPACK_RPM_PACKAGE_DESCRIPTION ${CPACK_PACKAGE_DESCRIPTION})
-
-############
-#deb options
-############
-# NOTE:: This separates the different parts of the debian package i guess... 
-# you can add a depnednecies section or you could make the package completely
-# standalone... in the context of something that is not released on the debian
-# store... it makes much more sense to just keep this as standalone
-# set(CPACK_DEB_COMPONENT_INSTALL TRUE) 
-
-# set(CPACK_DEBIAN_PACKAGE_PRIORITY "optional")
-# set(CPACK_DEBIAN_PACKAGE_SECTION "libs")
+  "${CMAKE_PROJECT_NAME}-${CPACK_PACKAGE_VERSION}-${CPACK_DEBIAN_PACKAGE_ARCHITECTURE}")
 
 # dependencies 
 set(CPACK_DEBIAN_PACKAGE_SHLIBDEPS TRUE)
 set(CPACK_COMPONENT_LIBS_REQUIRED TRUE)
-
-# TODO: handle something about GPUs ??
 
 include(CPack)
