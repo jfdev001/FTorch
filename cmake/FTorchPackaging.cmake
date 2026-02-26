@@ -11,8 +11,8 @@ set(CPACK_PACKAGE_CONTACT "Jared Frazier (cscidev001@gmail.com)")
 set(CPACK_PACKAGE_DESCRIPTION_SUMMARY "Fortran interface to PyTorch models")
 set(CPACK_PACKAGE_DESCRIPTION 
   "FTorch is a library for calling PyTorch machine learning models directly
-  from Fortran code. It enables coupling TorchScript models trained in PyTorch
-  to existing Fortran applications without requiring Python at runtime.")
+from Fortran code. It enables coupling TorchScript models trained in PyTorch
+to existing Fortran applications without requiring Python at runtime.")
 set(CPACK_PACKAGE_VERSION_MAJOR "${CMAKE_PROJECT_VERSION_MAJOR}")
 set(CPACK_PACKAGE_VERSION_MINOR "${CMAKE_PROJECT_VERSION_MINOR}")
 set(CPACK_PACKAGE_VERSION_PATCH "${CMAKE_PROJECT_VERSION_PATCH}")
